@@ -1391,6 +1391,9 @@ footer { background: var(--ink); color: rgba(255,255,255,0.6); padding: 4rem 3re
 }
 .lang-btn:hover { color: var(--ink); border-color: var(--ink); }
 .lang-btn.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+@media (max-width: 480px) {
+  .lang-btn { padding: 0.3rem 0.45rem; font-size: 0.62rem; }
+}
 </style>
 </head>
 <body>
@@ -1439,6 +1442,11 @@ footer { background: var(--ink); color: rgba(255,255,255,0.6); padding: 4rem 3re
     <a class="mobile-link" onclick="showPage('eventos');closeMenu()" data-i18n="nav_events">Eventos</a>
   </div>
   <div class="mobile-menu-footer">
+    <div class="lang-switcher" style="justify-content:center;margin-bottom:0.25rem;">
+      <button class="lang-btn active" onclick="setLanguage('pt')">PT</button>
+      <button class="lang-btn" onclick="setLanguage('ko')">한국어</button>
+      <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+    </div>
     <a class="mobile-cta-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdqP_l-zwT3c-DPyRnr0EAZO2mMIlW3yZHeZYMZW7EAuMBuAA/viewform" target="_blank" data-i18n="nav_join">Join the official trip →</a>
     <a class="mobile-cta-secondary" href="https://forms.gle/N8JkrxypsuiuzFjF6" target="_blank" data-i18n="nav_sponsor_short">Seja patrocinador →</a>
   </div>
