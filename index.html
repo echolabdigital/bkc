@@ -1375,8 +1375,6 @@ footer { background: var(--ink); color: rgba(255,255,255,0.6); padding: 4rem 3re
 
 /* ── LANGUAGE SWITCHER ── */
 .lang-switcher { display: flex; align-items: center; gap: 0.25rem; }
-nav .lang-switcher { display: flex; }
-@media (max-width: 991px) { nav .lang-switcher { display: none; } }
 .lang-btn {
   background: transparent;
   border: 1.5px solid var(--line);
@@ -1420,7 +1418,7 @@ nav .lang-switcher { display: flex; }
   <div class="nav-right">
     <div class="lang-switcher">
       <button class="lang-btn active" onclick="setLanguage('pt')">PT</button>
-      <button class="lang-btn" onclick="setLanguage('ko')">한국어</button>
+      <button class="lang-btn" onclick="setLanguage('ko')">KO</button>
       <button class="lang-btn" onclick="setLanguage('en')">EN</button>
     </div>
     <a href="https://forms.gle/N8JkrxypsuiuzFjF6" target="_blank" class="nav-cta-outline" data-i18n="nav_sponsor">Seja patrocinador</a>
