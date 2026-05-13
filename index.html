@@ -1372,6 +1372,25 @@ footer { background: var(--ink); color: rgba(255,255,255,0.6); padding: 4rem 3re
   .dual-cta { padding: 0 1.5rem; }
   .retro-home { padding: 0 1.5rem; }
 }
+
+/* ── LANGUAGE SWITCHER ── */
+.lang-switcher { display: flex; align-items: center; gap: 0.25rem; }
+.lang-btn {
+  background: transparent;
+  border: 1.5px solid var(--line);
+  border-radius: 100px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+.lang-btn:hover { color: var(--ink); border-color: var(--ink); }
+.lang-btn.active { background: var(--ink); color: #fff; border-color: var(--ink); }
 </style>
 </head>
 <body>
@@ -1390,12 +1409,17 @@ footer { background: var(--ink); color: rgba(255,255,255,0.6); padding: 4rem 3re
   <div class="nav-center">
     <a id="nav-home"    onclick="showPage('home')"    class="active">Home</a>
     <a id="nav-bkc2025" onclick="showPage('bkc2025')">BKC 25/26</a>
-    <a id="nav-viagem"  onclick="showPage('viagem')">Viagem 2026</a>
-    <a id="nav-eventos" onclick="showPage('eventos')">Eventos</a>
+    <a id="nav-viagem"  onclick="showPage('viagem')" data-i18n="nav_trip">Viagem 2026</a>
+    <a id="nav-eventos" onclick="showPage('eventos')" data-i18n="nav_events">Eventos</a>
   </div>
   <div class="nav-right">
-    <a href="https://forms.gle/N8JkrxypsuiuzFjF6" target="_blank" class="nav-cta-outline">Seja patrocinador</a>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqP_l-zwT3c-DPyRnr0EAZO2mMIlW3yZHeZYMZW7EAuMBuAA/viewform" target="_blank" class="nav-cta">Join the official trip →</a>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLanguage('pt')">PT</button>
+      <button class="lang-btn" onclick="setLanguage('ko')">한국어</button>
+      <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+    </div>
+    <a href="https://forms.gle/N8JkrxypsuiuzFjF6" target="_blank" class="nav-cta-outline" data-i18n="nav_sponsor">Seja patrocinador</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqP_l-zwT3c-DPyRnr0EAZO2mMIlW3yZHeZYMZW7EAuMBuAA/viewform" target="_blank" class="nav-cta" data-i18n="nav_join">Join the official trip →</a>
     <div class="nav-hamburger" onclick="openMenu()">
       <span></span><span></span><span></span>
     </div>
@@ -1411,12 +1435,12 @@ footer { background: var(--ink); color: rgba(255,255,255,0.6); padding: 4rem 3re
   <div class="nav-links">
     <a class="mobile-link" onclick="showPage('home');closeMenu()">Home</a>
     <a class="mobile-link" onclick="showPage('bkc2025');closeMenu()">BKC 25/26</a>
-    <a class="mobile-link" onclick="showPage('viagem');closeMenu()">Viagem 2026</a>
-    <a class="mobile-link" onclick="showPage('eventos');closeMenu()">Eventos</a>
+    <a class="mobile-link" onclick="showPage('viagem');closeMenu()" data-i18n="nav_trip">Viagem 2026</a>
+    <a class="mobile-link" onclick="showPage('eventos');closeMenu()" data-i18n="nav_events">Eventos</a>
   </div>
   <div class="mobile-menu-footer">
-    <a class="mobile-cta-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdqP_l-zwT3c-DPyRnr0EAZO2mMIlW3yZHeZYMZW7EAuMBuAA/viewform" target="_blank">Join the official trip →</a>
-    <a class="mobile-cta-secondary" href="https://forms.gle/N8JkrxypsuiuzFjF6" target="_blank">Seja patrocinador →</a>
+    <a class="mobile-cta-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdqP_l-zwT3c-DPyRnr0EAZO2mMIlW3yZHeZYMZW7EAuMBuAA/viewform" target="_blank" data-i18n="nav_join">Join the official trip →</a>
+    <a class="mobile-cta-secondary" href="https://forms.gle/N8JkrxypsuiuzFjF6" target="_blank" data-i18n="nav_sponsor_short">Seja patrocinador →</a>
   </div>
 </div>
 
@@ -1424,45 +1448,45 @@ footer { background: var(--ink); color: rgba(255,255,255,0.6); padding: 4rem 3re
 <div class="page active" id="page-home">
 
   <div class="hero">
-    <div class="hero-badge"><span class="pulse"></span> 14ª Edição · Setembro 2026 · Londres, Reino Unido</div>
+    <div class="hero-badge"><span class="pulse"></span><span data-i18n="hero_badge"> 14ª Edição · Setembro 2026 · Londres, Reino Unido</span></div>
     <h1>Brazil <span class="grad">Korea</span><br>Conference <em style="font-family:'Instrument Serif',serif;font-weight:400;">2026.</em></h1>
     <div class="hero-row">
-      <p class="hero-lead">Fortalecendo laços bilaterais entre <em>Brasil e Coreia</em> desde 2016 — negócios, inovação e conexões reais.</p>
+      <p class="hero-lead" data-i18n="hero_lead">Fortalecendo laços bilaterais entre Brasil e Coreia desde 2016 — negócios, inovação e conexões reais.</p>
       <div class="hero-actions">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqP_l-zwT3c-DPyRnr0EAZO2mMIlW3yZHeZYMZW7EAuMBuAA/viewform" target="_blank" class="btn btn-dark">Garantir vaga 2026 <span class="arrow">→</span></a>
-        <a onclick="showPage('bkc2025')" class="hero-link">Ver a conferência BKC 2025 →</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqP_l-zwT3c-DPyRnr0EAZO2mMIlW3yZHeZYMZW7EAuMBuAA/viewform" target="_blank" class="btn btn-dark" data-i18n="hero_cta">Garantir vaga 2026 →</a>
+        <a onclick="showPage('bkc2025')" class="hero-link" data-i18n="hero_link">Ver a conferência BKC 2025 →</a>
       </div>
     </div>
   </div>
 
   <div class="numbers-strip">
-    <div class="num-block"><div class="num-val c1">14ª</div><div class="num-label">Edição</div></div>
-    <div class="num-block"><div class="num-val c2">50+</div><div class="num-label">Palestrantes</div></div>
-    <div class="num-block"><div class="num-val c3">1.000</div><div class="num-label">Executivos</div></div>
-    <div class="num-block"><div class="num-val c4">2016</div><div class="num-label">Fundação</div></div>
+    <div class="num-block"><div class="num-val c1">14ª</div><div class="num-label" data-i18n="num_edition">Edição</div></div>
+    <div class="num-block"><div class="num-val c2">50+</div><div class="num-label" data-i18n="num_speakers">Palestrantes</div></div>
+    <div class="num-block"><div class="num-val c3">1.000</div><div class="num-label" data-i18n="num_execs">Executivos</div></div>
+    <div class="num-block"><div class="num-val c4">2016</div><div class="num-label" data-i18n="num_founded">Fundação</div></div>
   </div>
 
   <div class="home-cards">
     <div class="home-card bkc25" onclick="showPage('bkc2025')">
       <div class="home-card-accent"></div>
-      <div class="home-card-tag">// 13ª Edição · 2025 · Retrospectiva</div>
+      <div class="home-card-tag" data-i18n="card_bkc25_tag">// 13ª Edição · 2025 · Retrospectiva</div>
       <h3>BKC<br>2025.</h3>
-      <p>A conferência deste ano reuniu 50+ palestrantes e mais de 400 executivos na FKI Tower em Seul. Confira agenda completa, palestrantes e fotos.</p>
-      <div class="home-card-arrow">Explorar o BKC 2025 →</div>
+      <p data-i18n="card_bkc25_desc">A conferência deste ano reuniu 50+ palestrantes e mais de 400 executivos na FKI Tower em Seul. Confira agenda completa, palestrantes e fotos.</p>
+      <div class="home-card-arrow" data-i18n="card_bkc25_arrow">Explorar o BKC 2025 →</div>
     </div>
     <div class="home-card viagem" onclick="showPage('viagem')">
       <div class="home-card-accent"></div>
-      <div class="home-card-tag">// 14ª Edição · 2026</div>
+      <div class="home-card-tag" data-i18n="card_trip_tag">// 14ª Edição · 2026</div>
       <h3>Viagem<br>2026.</h3>
-      <p>Inscrições abertas para a delegação oficial BKC 2026 em Londres. Vagas limitadas para empresários e líderes selecionados que querem construir pontes reais.</p>
-      <div class="home-card-arrow">Saber mais sobre a viagem →</div>
+      <p data-i18n="card_trip_desc">Inscrições abertas para a delegação oficial BKC 2026 em Londres. Vagas limitadas para empresários e líderes selecionados que querem construir pontes reais.</p>
+      <div class="home-card-arrow" data-i18n="card_trip_arrow">Saber mais sobre a viagem →</div>
     </div>
     <div class="home-card" style="background:linear-gradient(135deg,#0c1440 0%,#1a2460 60%,#0d3b6e 100%);border:1px solid rgba(255,255,255,0.08);" onclick="showPage('eventos')">
       <div class="home-card-accent" style="background:linear-gradient(90deg,var(--cyan),var(--blue));"></div>
-      <div class="home-card-tag" style="color:var(--cyan);">// Próximos eventos · 2026</div>
+      <div class="home-card-tag" style="color:var(--cyan);" data-i18n="card_events_tag">// Próximos eventos · 2026</div>
       <h3 style="color:#fff;">Eventos<br>2026.</h3>
-      <p style="color:rgba(255,255,255,0.7);">Jantares, harmonizações e encontros exclusivos. Vagas limitadas para quem quer viver o universo Brasil–Coreia além da conferência principal.</p>
-      <div class="home-card-arrow" style="color:var(--cyan);">Ver todos os eventos →</div>
+      <p style="color:rgba(255,255,255,0.7);" data-i18n="card_events_desc">Jantares, harmonizações e encontros exclusivos. Vagas limitadas para quem quer viver o universo Brasil–Coreia além da conferência principal.</p>
+      <div class="home-card-arrow" style="color:var(--cyan);" data-i18n="card_events_arrow">Ver todos os eventos →</div>
     </div>
   </div>
 
@@ -1499,10 +1523,10 @@ footer { background: var(--ink); color: rgba(255,255,255,0.6); padding: 4rem 3re
   <div class="dual-cta">
     <div class="dual-cta-grid">
       <div class="dual-cta-card delegacao">
-        <span class="dual-cta-eyebrow">// Participar · 14ª Edição</span>
-        <h3 class="dual-cta-h">Delegação <em>Oficial</em><br>BKC 2026.</h3>
-        <p class="dual-cta-p">Faça parte da delegação brasileira que vai a Londres em setembro de 2026. Vagas limitadas para empresários e líderes selecionados.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqP_l-zwT3c-DPyRnr0EAZO2mMIlW3yZHeZYMZW7EAuMBuAA/viewform" target="_blank" class="dual-cta-btn">Inscrever-se na delegação <span>→</span></a>
+        <span class="dual-cta-eyebrow" data-i18n="cta_deleg_eyebrow">// Participar · 14ª Edição</span>
+        <h3 class="dual-cta-h" data-i18n-html="cta_deleg_title">Delegação <em>Oficial</em><br>BKC 2026.</h3>
+        <p class="dual-cta-p" data-i18n="cta_deleg_desc">Faça parte da delegação brasileira que vai a Londres em setembro de 2026. Vagas limitadas para empresários e líderes selecionados.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqP_l-zwT3c-DPyRnr0EAZO2mMIlW3yZHeZYMZW7EAuMBuAA/viewform" target="_blank" class="dual-cta-btn" data-i18n="cta_deleg_btn">Inscrever-se na delegação →</a>
       </div>
       <div class="dual-cta-card sponsor">
         <span class="dual-cta-eyebrow">// Apoiar · Visibilidade Internacional</span>
