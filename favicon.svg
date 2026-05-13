@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1440"/>
+      <stop offset="100%" stop-color="#1a2460"/>
+    </linearGradient>
+    <linearGradient id="rainbow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"    stop-color="#e8354a"/>
+      <stop offset="20%"   stop-color="#f59520"/>
+      <stop offset="40%"   stop-color="#f5c800"/>
+      <stop offset="60%"   stop-color="#5ab96b"/>
+      <stop offset="80%"   stop-color="#28b8b0"/>
+      <stop offset="100%"  stop-color="#9b55f0"/>
+    </linearGradient>
+    <clipPath id="round">
+      <rect width="32" height="32" rx="7" ry="7"/>
+    </clipPath>
+  </defs>
+
+  <!-- Fundo arredondado -->
+  <rect width="32" height="32" rx="7" ry="7" fill="url(#bg)"/>
+
+  <!-- Barra rainbow no topo -->
+  <rect x="0" y="0" width="32" height="3" rx="0" fill="url(#rainbow)" clip-path="url(#round)"/>
+
+  <!-- Letras BK centralizadas -->
+  <!-- B -->
+  <text
+    x="6" y="23"
+    font-family="Georgia, serif"
+    font-size="17"
+    font-weight="700"
+    font-style="italic"
+    fill="#ffffff"
+    letter-spacing="-1"
+  >BK</text>
+
+  <!-- Ponto × pequeno em cyan -->
+  <circle cx="27" cy="10" r="2.2" fill="#28b8b0" opacity="0.9"/>
+</svg>

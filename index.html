@@ -1,0 +1,2898 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brazil Korea Conference</title>
+<meta name="description" content="O Brazil Korea Conference foi criado em 2016 pela advogada Su Jung Ko, tendo como objetivo fomentar as relações bilaterais entre Brasil e Coreia.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:     #ffffff;
+  --bg-2:   #f7f5f2;
+  --bg-3:   #f0ede8;
+  --ink:    #0c1440;
+  --ink-2:  #1a2460;
+  --muted:  rgba(12,20,64,0.45);
+  --line:   rgba(12,20,64,0.10);
+  --line-2: rgba(12,20,64,0.06);
+  --red:    #e8354a;
+  --orange: #f59520;
+  --yellow: #f5c800;
+  --lime:   #5ab96b;
+  --cyan:   #28b8b0;
+  --blue:   #3a72e8;
+  --purple: #9b55f0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--yellow); color: var(--ink); }
+
+/* ── RAINBOW BAR ── */
+.rainbow {
+  height: 4px;
+  background: linear-gradient(90deg, var(--red), var(--orange), var(--yellow), var(--lime), var(--cyan), var(--blue), var(--purple));
+}
+
+/* ── NAV ── */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem;
+  padding-left: max(3rem, env(safe-area-inset-left));
+  padding-right: max(3rem, env(safe-area-inset-right));
+  height: 72px;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(20px);
+  z-index: 200;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.nav-logo img { height: 36px; width: auto; }
+.logo-crop { position: relative; height: 36px; display: inline-flex; align-items: center; }
+.logo-crop img { height: 36px; width: auto; display: block; }
+.logo-mask { position: absolute; right: 0; bottom: 2px; width: 28px; height: 13px; background: var(--bg); }
+
+.nav-center {
+  display: flex;
+  gap: 0;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.nav-center a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.55rem 1.25rem;
+  border-radius: 100px;
+  transition: all 0.2s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nav-center a:hover { color: var(--ink); }
+.nav-center a.active {
+  color: var(--ink);
+  background: var(--bg-2);
+  font-weight: 600;
+}
+
+.nav-right { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
+
+.nav-cta {
+  background: var(--ink);
+  color: #fff !important;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.65rem 1.4rem;
+  border-radius: 100px;
+  transition: all 0.2s;
+  cursor: pointer;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+.nav-cta:hover { background: var(--blue); transform: translateY(-1px); }
+
+.nav-cta-outline {
+  background: transparent;
+  color: var(--ink) !important;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.65rem 1.2rem;
+  border-radius: 100px;
+  border: 1.5px solid var(--ink);
+  transition: all 0.2s;
+  cursor: pointer;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+.nav-cta-outline:hover { background: var(--ink); color: #fff !important; }
+
+@media (max-width: 991px) { .nav-cta-outline { display: none; } }
+@media (max-width: 767px) { .nav-cta { display: none; } }
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 12px 8px;
+  margin: -12px -8px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+}
+.nav-hamburger span {
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease, background 0.2s;
+  display: block;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── MOBILE MENU ── */
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 300;
+  padding: max(2rem, env(safe-area-inset-top)) 2rem max(2rem, env(safe-area-inset-bottom));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  /* estado inicial: invisível */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.4,0,0.2,1), visibility 0s linear 0.28s;
+}
+.mobile-menu.open {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.4,0,0.2,1);
+}
+.mobile-menu-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.mobile-menu-logo {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.1rem;
+  color: var(--muted);
+  letter-spacing: -0.01em;
+}
+.mobile-menu-close {
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--muted);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.mobile-menu-close:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+.mobile-menu .nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 2rem;
+  flex: 1;
+}
+.mobile-link {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2rem, 10vw, 2.75rem);
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--line);
+  transition: color 0.18s, padding-left 0.18s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  display: block;
+  line-height: 1.2;
+}
+.mobile-link:active { color: var(--cyan); padding-left: 0.5rem; }
+.mobile-link:hover { color: var(--cyan); }
+.mobile-menu-footer {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.mobile-cta-primary {
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  background: var(--ink); color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 700; font-size: 0.9rem;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 0.02em;
+}
+.mobile-cta-primary:active { transform: scale(0.97); background: var(--blue); }
+.mobile-cta-secondary {
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  background: transparent; color: var(--ink);
+  padding: 0.9rem 1.5rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--line);
+  font-weight: 600; font-size: 0.85rem;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.mobile-cta-secondary:active { transform: scale(0.97); border-color: var(--ink); }
+/* Reduzir animação se usuário preferir */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu { transition: none; }
+  .nav-hamburger span { transition: none; }
+}
+
+/* ── PAGE SYSTEM ── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ── SHARED ── */
+.container { max-width: 1240px; margin: 0 auto; padding: 0 3rem; }
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 1.5rem;
+}
+.section-label::before { content: ''; width: 24px; height: 1px; background: currentColor; }
+.section-label.red { color: var(--red); }
+.section-label.orange { color: var(--orange); }
+.section-label.ink { color: var(--ink); }
+.section-label.purple { color: var(--purple); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 100px;
+  padding: 0.9rem 2rem;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+.btn-dark { background: var(--ink); color: #fff; }
+.btn-dark:hover { background: var(--blue); transform: translateY(-2px); }
+.btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--line); padding: 0.85rem 2rem; }
+.btn-outline:hover { border-color: var(--ink); transform: translateY(-2px); }
+.btn-white { background: #fff; color: var(--ink); }
+.btn-white:hover { background: var(--bg-2); transform: translateY(-2px); }
+.btn .arrow { transition: transform 0.2s; }
+.btn:hover .arrow { transform: translateX(4px); }
+
+/* ══════════ HOME ══════════ */
+
+.hero {
+  padding: 6rem 3rem 5rem;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  border: 1.5px solid var(--line);
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+}
+.hero-badge .pulse {
+  width: 7px; height: 7px;
+  background: var(--cyan);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.7); }
+}
+.hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(3.5rem, 9vw, 9rem);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  margin-bottom: 0;
+  color: var(--ink);
+}
+.hero h1 .grad {
+  font-style: italic;
+  background: linear-gradient(135deg, var(--red) 0%, var(--orange) 30%, var(--yellow) 55%, var(--cyan) 80%, var(--purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-top: 3.5rem;
+  align-items: end;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+.hero-lead {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.45rem;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--ink);
+  opacity: 0.75;
+}
+.hero-lead em { color: var(--cyan); font-style: italic; }
+.hero-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+.hero-link {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.2rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.hero-link:hover { color: var(--ink); border-color: var(--ink); }
+
+/* NUMBERS STRIP */
+.numbers-strip {
+  background: var(--ink);
+  padding: 2.5rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.num-block {
+  padding: 0 2rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+}
+.num-block:first-child { padding-left: 0; }
+.num-block:last-child { border-right: none; }
+.num-val {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.num-val.c1 { color: var(--orange); }
+.num-val.c2 { color: var(--yellow); }
+.num-val.c3 { color: var(--cyan); }
+.num-val.c4 { color: var(--purple); }
+.num-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+
+/* HOME CARDS */
+.home-cards {
+  padding: 5rem 3rem;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.home-card {
+  background: var(--bg-2);
+  border-radius: 16px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 1.5px solid transparent;
+}
+.home-card:hover {
+  border-color: var(--line);
+  transform: translateY(-4px);
+  background: var(--bg);
+  box-shadow: 0 16px 48px rgba(12,20,64,0.08);
+}
+.home-card-accent { position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+.home-card.bkc25 .home-card-accent { background: linear-gradient(90deg, var(--orange), var(--yellow)); }
+.home-card.viagem .home-card-accent { background: linear-gradient(90deg, var(--cyan), var(--blue)); }
+.home-card-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+.home-card.bkc25 .home-card-tag { color: var(--orange); }
+.home-card.viagem .home-card-tag { color: var(--cyan); }
+.home-card h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 2.2rem;
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--ink);
+}
+.home-card p { font-size: 0.95rem; line-height: 1.65; color: var(--muted); }
+.home-card-arrow {
+  margin-top: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+  transition: gap 0.2s;
+}
+.home-card:hover .home-card-arrow { gap: 0.85rem; }
+
+/* MARQUEE */
+.marquee-wrap {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 1.25rem 0;
+  background: var(--bg-2);
+  overflow: hidden;
+}
+.marquee-track {
+  display: flex;
+  gap: 3.5rem;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+  white-space: nowrap;
+}
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-item {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.5rem;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  opacity: 0.4;
+}
+.marquee-item em { font-style: italic; }
+.marquee-item.c-red em { color: var(--red); opacity: 1; }
+.marquee-item.c-orange em { color: var(--orange); opacity: 1; }
+.marquee-item.c-yellow em { color: #c9a500; opacity: 1; }
+.marquee-item.c-lime em { color: var(--lime); opacity: 1; }
+.marquee-item.c-cyan em { color: var(--cyan); opacity: 1; }
+.marquee-item.c-blue em { color: var(--blue); opacity: 1; }
+.marquee-item.c-purple em { color: var(--purple); opacity: 1; }
+.marquee-item::after { content: '✦'; font-size: 0.6rem; opacity: 0.3; }
+
+/* ── HOME DUAL CTA (Delegação + Patrocínio) ── */
+.dual-cta { max-width: 1240px; margin: 4rem auto 2rem; padding: 0 3rem; }
+.dual-cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.dual-cta-card {
+  position: relative;
+  padding: 2.5rem 2rem;
+  border-radius: 18px;
+  display: flex; flex-direction: column; gap: .75rem;
+  overflow: hidden;
+  transition: transform .25s, box-shadow .25s;
+}
+.dual-cta-card:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(12,20,64,.18); }
+.dual-cta-card.delegacao { background: var(--ink); color: #fff; }
+.dual-cta-card.delegacao::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(circle at 20% 0%, rgba(58,114,232,.35) 0%, transparent 50%),
+              radial-gradient(circle at 90% 100%, rgba(120,80,200,.25) 0%, transparent 50%);
+  pointer-events:none;
+}
+.dual-cta-card.sponsor {
+  background: #fff;
+  border: 1.5px solid var(--line);
+  color: var(--ink);
+}
+.dual-cta-card.sponsor::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:4px;
+  background: linear-gradient(90deg, var(--red), var(--orange), var(--yellow), var(--lime), var(--cyan), var(--blue), var(--purple));
+}
+.dual-cta-eyebrow { position:relative; z-index:2; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; opacity: .65; }
+.dual-cta-card.delegacao .dual-cta-eyebrow { color: var(--cyan); opacity:1; }
+.dual-cta-card.sponsor .dual-cta-eyebrow { color: var(--orange); opacity:1; }
+.dual-cta-h { position:relative; z-index:2; font-family: 'Instrument Serif', serif; font-size: clamp(1.8rem, 3.5vw, 2.4rem); line-height: 1.05; margin: .25rem 0 .5rem; }
+.dual-cta-h em { font-style: italic; }
+.dual-cta-card.delegacao .dual-cta-h em { color: var(--cyan); }
+.dual-cta-card.sponsor   .dual-cta-h em { color: var(--blue); }
+.dual-cta-p { position:relative; z-index:2; font-size: .95rem; line-height: 1.6; opacity: .85; margin-bottom: .5rem; }
+.dual-cta-card.sponsor .dual-cta-p { color: var(--muted); opacity:1; }
+.dual-cta-btn {
+  position:relative; z-index:2;
+  align-self: flex-start;
+  display: inline-flex; align-items:center; gap:.5rem;
+  padding: .85rem 1.4rem; border-radius: 10px;
+  font-size: .9rem; font-weight: 600;
+  text-decoration: none;
+  transition: transform .2s, background .2s;
+  margin-top: auto;
+}
+.dual-cta-card.delegacao .dual-cta-btn { background:#fff; color: var(--ink); }
+.dual-cta-card.sponsor   .dual-cta-btn { background: var(--ink); color: #fff; }
+.dual-cta-btn:hover { transform: translateX(3px); }
+
+/* ── HOME RETROSPECTIVA BKC 2025 (vídeo lado-a-lado + mini-galeria) ── */
+.retro-home { max-width: 1240px; margin: 4rem auto 2rem; padding: 0 3rem; }
+.retro-head { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: 1.75rem; flex-wrap: wrap; }
+.retro-head-left { max-width: 560px; }
+.retro-head h2 { font-family: 'Instrument Serif', serif; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.05; margin: .4rem 0 .5rem; color: var(--ink); }
+.retro-head h2 em { font-style: italic; color: var(--blue); }
+.retro-head p { color: var(--muted); font-size: 1rem; line-height: 1.55; }
+.retro-link-all { font-size: .85rem; font-weight: 600; color: var(--ink); text-decoration: none; display: inline-flex; align-items:center; gap: .4rem; padding: .6rem 0; border-bottom: 1.5px solid var(--ink); transition: gap .2s; cursor: pointer; }
+.retro-link-all:hover { gap: .7rem; }
+
+.retro-body { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.5rem; }
+.retro-video { position: relative; padding-top: 56.25%; border-radius: 14px; overflow: hidden; border: 1.5px solid var(--line); background: #000; cursor: pointer; }
+.retro-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+.retro-video-thumb {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  display: flex; align-items: center; justify-content: center;
+  transition: filter .25s;
+}
+.retro-video-thumb::after {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55) 100%);
+}
+.retro-video:hover .retro-video-thumb { filter: brightness(.85); }
+.retro-video-play {
+  position: relative; z-index: 2;
+  width: 72px; height: 72px; border-radius: 50%;
+  background: rgba(255,255,255,.95);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; padding-left: 6px;
+  color: var(--ink);
+  box-shadow: 0 8px 24px rgba(0,0,0,.4);
+  transition: transform .25s, background .25s;
+}
+.retro-video:hover .retro-video-play { transform: scale(1.08); background: #fff; }
+.retro-video-caption {
+  position: absolute; left: 1rem; bottom: 1rem; z-index: 2;
+  color: #fff; font-size: .8rem; font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0,0,0,.5);
+}
+.retro-mini-gallery { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: .75rem; position: relative; }
+.retro-mini-gallery img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; min-height: 130px; transition: transform .3s; cursor: pointer; }
+.retro-mini-gallery img:hover { transform: scale(1.02); }
+.retro-mini-caption {
+  position: absolute; bottom: .85rem; right: .85rem;
+  background: rgba(12,20,64,.85); color: #fff;
+  font-size: .68rem; font-weight: 600; letter-spacing: .04em;
+  padding: .35rem .7rem; border-radius: 100px;
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+
+/* ── BKC 2025 PAGE: vídeo lado-a-lado ── */
+.video-side { max-width: 1240px; margin: 0 auto; padding: 0 3rem 4rem; display: grid; grid-template-columns: 1.3fr 1fr; gap: 2.5rem; align-items: center; }
+.video-side .video-side-text h2 { font-family: 'Instrument Serif', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.1; margin: .5rem 0 1rem; color: var(--ink); }
+.video-side .video-side-text h2 em { font-style: italic; color: var(--orange); }
+.video-side .video-side-text p { color: var(--muted); font-size: 1rem; line-height: 1.65; margin-bottom: 1rem; }
+.video-side .video-wrapper { border: 1.5px solid var(--line); border-radius: 16px; overflow: hidden; position: relative; padding-top: 56.25%; }
+.video-side .video-wrapper iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+
+/* ── BKC 2025 PAGE: TIMELINE DAS EDIÇÕES ── */
+.timeline-wrap { padding: 5rem 3rem; max-width: 1240px; margin: 0 auto; }
+.timeline-head { text-align: center; margin-bottom: 3rem; }
+.timeline-head h2 { font-family: 'Instrument Serif', serif; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.05; margin: .5rem 0; color: var(--ink); }
+.timeline-head h2 em { font-style: italic; color: var(--blue); }
+.timeline-head p { color: var(--muted); font-size: 1rem; max-width: 560px; margin: 0 auto; }
+.timeline-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 1rem;
+  padding-top: 1rem;
+}
+.timeline-track::before {
+  content:''; position: absolute; left: 0; right: 0; top: 50%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--red), var(--orange), var(--yellow), var(--lime), var(--cyan), var(--blue), var(--purple));
+  border-radius: 3px;
+  z-index: 0;
+}
+.timeline-item {
+  position: relative; z-index: 1;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+}
+.timeline-dot { width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 3px solid var(--ink); }
+.timeline-item.future .timeline-dot { background: var(--ink); border-color: var(--cyan); }
+.timeline-year { font-family: 'Instrument Serif', serif; font-size: 1.05rem; color: var(--ink); }
+.timeline-edition { font-size: .65rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+.timeline-item.future .timeline-year { color: var(--blue); font-weight: 600; }
+.timeline-item.future .timeline-edition { color: var(--orange); }
+.timeline-item.alt { flex-direction: column-reverse; }
+
+/* ── VIAGEM 2026 PAGE: ITINERÁRIO ── */
+.itinerary-wrap { max-width: 1100px; margin: 0 auto; padding: 5rem 3rem; }
+.itinerary-head { margin-bottom: 2.5rem; }
+.itinerary-head h2 { font-family: 'Instrument Serif', serif; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.05; margin: .5rem 0; color: var(--ink); }
+.itinerary-head h2 em { font-style: italic; color: var(--orange); }
+.itinerary-head p { color: var(--muted); font-size: 1rem; max-width: 560px; }
+.itinerary-list { display: flex; flex-direction: column; gap: 1rem; }
+.itin-day {
+  display: grid; grid-template-columns: 90px 1fr auto;
+  gap: 1.5rem; align-items: center;
+  padding: 1.25rem 1.5rem;
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.itin-day:hover { border-color: var(--blue); box-shadow: 0 8px 24px rgba(58,114,232,.1); }
+.itin-day-num { font-family: 'Instrument Serif', serif; font-size: 2rem; color: var(--blue); line-height: 1; }
+.itin-day-num small { display: block; font-family: 'DM Sans', sans-serif; font-size: .65rem; color: var(--muted); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-top: .25rem; }
+.itin-day-content h4 { font-size: 1.05rem; color: var(--ink); margin-bottom: .25rem; font-weight: 600; }
+.itin-day-content p { color: var(--muted); font-size: .9rem; line-height: 1.5; }
+.itin-day-tag {
+  font-size: .7rem; font-weight: 700; padding: .35rem .75rem;
+  border-radius: 100px; text-transform: uppercase; letter-spacing: .06em;
+  background: var(--bg-2); color: var(--ink-2);
+}
+.itin-day-tag.confer { background: var(--ink); color: #fff; }
+.itin-day-tag.cultura { background: linear-gradient(90deg, var(--orange), var(--red)); color: #fff; }
+.itin-day-tag.network { background: var(--blue); color: #fff; }
+.itinerary-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: var(--bg-2); border-left: 3px solid var(--orange); border-radius: 0 8px 8px 0; font-size: .85rem; color: var(--muted); }
+
+/* ── INSTAGRAM REELS ── */
+.ig-section {
+  background: linear-gradient(180deg, #fbf6f8 0%, #f7f4fb 60%, #f4f6fb 100%);
+  padding: 5rem 3rem;
+  margin: 0;
+  border-top: 1px solid rgba(221,42,123,.08);
+  border-bottom: 1px solid rgba(129,52,175,.08);
+  position: relative;
+}
+.ig-section::before {
+  content:''; position: absolute; top:0; left:50%; transform: translateX(-50%);
+  width: 80px; height: 3px;
+  background: linear-gradient(90deg, #f58529, #dd2a7b, #8134af);
+  border-radius: 0 0 3px 3px;
+}
+.ig-inner { max-width: 1080px; margin: 0 auto; }
+.ig-header { display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+.ig-header-left { display: flex; align-items: center; gap: 1.25rem; }
+.ig-header-pic {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, #f58529 0%, #dd2a7b 50%, #8134af 100%);
+  flex-shrink: 0;
+}
+.ig-header-pic-inner { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: #fff; padding: 2px; box-sizing: border-box; }
+.ig-header-pic img { width: 100%; height: 100%; object-fit: contain; object-position: center center; border-radius: 50%; display: block; padding: 8px; background: #fff; }
+.ig-header-text .ig-eyebrow { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: .25rem; }
+.ig-header-text h2 { font-family: 'Instrument Serif', serif; font-size: clamp(1.6rem, 2.8vw, 2rem); line-height: 1.1; color: var(--ink); margin: 0 0 .25rem; }
+.ig-header-text h2 em { font-style: italic; color: var(--purple); }
+.ig-header-text .ig-handle { font-size: .85rem; color: var(--muted); }
+.ig-header-text .ig-handle a { color: var(--blue); text-decoration: none; font-weight: 600; }
+.ig-link-all {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .8rem 1.4rem;
+  background: linear-gradient(135deg, #f58529 0%, #dd2a7b 50%, #8134af 100%);
+  color: #fff; border-radius: 100px;
+  font-size: .85rem; font-weight: 600;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+  white-space: nowrap;
+}
+.ig-link-all:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(221,42,123,.35); }
+
+.ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; max-width: 840px; margin: 0 auto; }
+.ig-reel {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  max-height: 460px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f8f8f8;
+  border: 1px solid var(--line);
+  transition: transform .25s, box-shadow .25s;
+}
+.ig-reel:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,.14); }
+.ig-reel iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+/* Placeholder elegante */
+.ig-reel-placeholder {
+  position: relative;
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .85rem;
+  background: linear-gradient(135deg, #f58529 0%, #dd2a7b 50%, #8134af 100%);
+  color: #fff;
+  padding: 1.25rem;
+  text-align: center;
+  overflow: hidden;
+}
+.ig-reel-placeholder::before {
+  content:''; position: absolute; inset:0;
+  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.18), transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(0,0,0,.15), transparent 60%);
+  pointer-events: none;
+}
+.ig-reel-placeholder > * { position: relative; z-index: 1; }
+.ig-reel-placeholder .ig-play {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.18);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255,255,255,.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  padding-left: 4px;
+}
+.ig-reel-placeholder strong { font-family: 'Instrument Serif', serif; font-size: 1.3rem; font-weight: 400; letter-spacing: .02em; }
+.ig-reel-placeholder small { font-size: .72rem; opacity: .9; max-width: 200px; line-height: 1.45; }
+
+.ig-note { margin-top: 1.25rem; font-size: .72rem; color: var(--muted); text-align: center; max-width: 640px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+
+@media (max-width: 800px) {
+  .ig-grid { grid-template-columns: 1fr 1fr; max-width: 520px; }
+  .ig-grid .ig-reel:nth-child(3) { display: none; }
+  .ig-section { padding: 3rem 1.5rem; }
+  .ig-header { gap: 1rem; }
+  .ig-link-all { padding: .65rem 1.1rem; font-size: .78rem; }
+}
+@media (max-width: 500px) {
+  .ig-grid { grid-template-columns: 1fr; max-width: 320px; }
+  .ig-grid .ig-reel:nth-child(2), .ig-grid .ig-reel:nth-child(3) { display: none; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .dual-cta-grid { grid-template-columns: 1fr; }
+  .retro-body { grid-template-columns: 1fr; }
+  .video-side { grid-template-columns: 1fr; gap: 1.5rem; }
+  .timeline-track { grid-template-columns: repeat(5, 1fr); }
+  .itin-day { grid-template-columns: 70px 1fr; }
+  .itin-day-tag { grid-column: 2; justify-self: start; margin-top: .5rem; }
+}
+@media (max-width: 600px) {
+  .dual-cta, .retro-home { padding: 0 1.25rem; }
+  .video-side, .timeline-wrap, .itinerary-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .retro-mini-gallery img { min-height: 100px; }
+  .timeline-track { grid-template-columns: repeat(4, 1fr); gap: 1.5rem 1rem; }
+}
+
+/* FOUNDER */
+.home-founder {
+  padding: 5rem 3rem;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 5rem;
+  align-items: center;
+}
+.founder-left h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+.founder-left h2 em { font-style: italic; color: var(--cyan); }
+.founder-left p { font-size: 1rem; line-height: 1.7; color: var(--muted); margin-bottom: 1.25rem; }
+.founder-card {
+  background: var(--bg-2);
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  margin-top: 2rem;
+}
+.founder-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--red), var(--orange), var(--yellow), var(--cyan), var(--purple));
+}
+.founder-avatar {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--red), var(--purple));
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.3rem;
+  color: #fff;
+  font-style: italic;
+  overflow: hidden;
+}
+.founder-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.founder-info strong { display: block; font-family: 'Instrument Serif', serif; font-size: 1.2rem; font-weight: 400; }
+.founder-info span { font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.founder-quote {
+  background: var(--bg-2);
+  border-radius: 16px;
+  padding: 3rem;
+  border: 1.5px solid var(--line);
+}
+.founder-quote blockquote {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.55rem;
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+.founder-quote cite { font-style: normal; font-size: 0.82rem; color: var(--muted); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* PARTNERS STRIP */
+.partners-strip {
+  padding: 4rem 3rem;
+  border-top: 1px solid var(--line);
+  max-width: 1240px;
+  margin: 0 auto;
+  text-align: center;
+}
+.partners-label { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 2rem; }
+.partners-logos { display: flex; justify-content: center; align-items: center; gap: 2.5rem; flex-wrap: wrap; }
+.partners-logos img { height: 40px; width: auto; opacity: 0.85; transition: all 0.2s; object-fit: contain; }
+.partners-logos img:hover { opacity: 1; transform: scale(1.05); }
+
+/* ══════════ BKC 2025 ══════════ */
+
+.page-hero {
+  padding: 5rem 3rem 4rem;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.page-hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  color: var(--ink);
+}
+.page-hero h1 em { font-style: italic; color: var(--orange); }
+.page-hero .lead { font-size: 1.2rem; line-height: 1.6; color: var(--muted); max-width: 640px; }
+
+/* VIDEO */
+.video-section { padding: 0 3rem 4rem; max-width: 1240px; margin: 0 auto; }
+.video-wrapper {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  padding-top: 56.25%;
+  border: 1.5px solid var(--line);
+}
+.video-wrapper iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
+/* PHOTO GRID */
+.photo-section { padding: 4rem 3rem; background: var(--bg-2); }
+.photo-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.photo-grid img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+.photo-grid img:hover { transform: scale(1.02); }
+.photo-grid img.tall { grid-row: span 2; aspect-ratio: 3/4; }
+
+/* EVENT INFO */
+.event-info { padding: 4rem 3rem; max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.event-info-card {
+  background: var(--bg-2);
+  border-radius: 16px;
+  padding: 2.5rem;
+  border: 1.5px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.event-info-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.event-info-card.venue::before { background: linear-gradient(90deg, var(--orange), var(--yellow)); }
+.event-info-card.purpose::before { background: linear-gradient(90deg, var(--cyan), var(--blue)); }
+.event-info-card h3 { font-family: 'Instrument Serif', serif; font-size: 1.6rem; font-weight: 400; margin-bottom: 1rem; }
+.event-info-card p { font-size: 0.95rem; line-height: 1.7; color: var(--muted); }
+.event-meta { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.event-meta-row { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--line); }
+.event-meta-key { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.event-meta-val { font-weight: 600; font-size: 0.9rem; }
+.event-meta-val.orange { color: var(--orange); }
+.event-meta-val.cyan { color: var(--cyan); }
+
+/* TOPICS */
+.topics-section { padding: 4rem 3rem; background: var(--ink); }
+.topics-inner { max-width: 1240px; margin: 0 auto; }
+.topics-inner .section-label { color: rgba(255,255,255,0.4); }
+.topics-inner .section-label::before { background: rgba(255,255,255,0.4); }
+.topics-inner h2 { font-family: 'Instrument Serif', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; color: #fff; margin-bottom: 2.5rem; }
+.topics-cloud { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.topic-pill {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 100px;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  transition: all 0.2s;
+  cursor: default;
+}
+.topic-pill:hover { background: rgba(255,255,255,0.14); color: #fff; }
+
+/* PURPOSE CARDS */
+.purpose-section { padding: 4rem 3rem; max-width: 1240px; margin: 0 auto; }
+.purpose-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+.purpose-card {
+  background: var(--bg-2);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1.5px solid var(--line);
+  transition: all 0.25s;
+}
+.purpose-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(12,20,64,0.08); background: var(--bg); }
+.purpose-icon { font-size: 2rem; margin-bottom: 1rem; }
+.purpose-card h3 { font-family: 'Instrument Serif', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 0.75rem; }
+.purpose-card p { font-size: 0.88rem; line-height: 1.65; color: var(--muted); }
+
+/* AGENDA */
+.agenda-section { padding: 4rem 3rem; max-width: 1240px; margin: 0 auto; }
+.agenda-section h2 { font-family: 'Instrument Serif', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; margin-bottom: 2.5rem; }
+.accordion { display: flex; flex-direction: column; gap: 0; border: 1.5px solid var(--line); border-radius: 16px; overflow: hidden; }
+.accordion-item { border-bottom: 1px solid var(--line); }
+.accordion-item:last-child { border-bottom: none; }
+.accordion-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+}
+.accordion-trigger:hover { background: var(--bg-2); }
+.accordion-trigger.open { background: var(--bg-2); }
+.accordion-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+  min-width: 180px;
+}
+.accordion-title { font-weight: 600; font-size: 0.95rem; flex: 1; padding: 0 1.5rem; }
+.accordion-chevron { color: var(--muted); transition: transform 0.3s; flex-shrink: 0; }
+.accordion-trigger.open .accordion-chevron { transform: rotate(180deg); }
+.accordion-content {
+  display: none;
+  padding: 0 2rem 1.75rem;
+  background: var(--bg-2);
+}
+.accordion-content.open { display: block; }
+.accordion-content p { font-size: 0.92rem; line-height: 1.75; color: var(--muted); }
+.accordion-content strong { color: var(--ink); }
+
+/* FEATURED SPEAKERS */
+.featured-section { padding: 5rem 3rem; max-width: 1240px; margin: 0 auto; }
+.featured-section h2 { font-family: 'Instrument Serif', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; margin-bottom: 2.5rem; }
+.featured-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+  background: var(--bg-2);
+  border-radius: 16px;
+  padding: 3rem;
+  border: 1.5px solid var(--line);
+  margin-bottom: 1.5rem;
+  align-items: center;
+  transition: all 0.3s;
+}
+.featured-card:hover { box-shadow: 0 12px 48px rgba(12,20,64,0.08); }
+.featured-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.featured-info h3 { font-family: 'Instrument Serif', serif; font-size: 2rem; font-weight: 400; margin-bottom: 0.25rem; }
+.featured-info .role { font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.75rem; }
+.featured-info .company-logo { height: 28px; margin-bottom: 1.25rem; object-fit: contain; }
+.featured-info p { font-size: 0.93rem; line-height: 1.75; color: var(--muted); }
+
+/* SPEAKERS GRID */
+.speakers-section { padding: 4rem 3rem; background: var(--bg-2); }
+.speakers-inner { max-width: 1240px; margin: 0 auto; }
+.speakers-inner h2 { font-family: 'Instrument Serif', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; margin-bottom: 2.5rem; color: var(--ink); }
+.speakers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.25rem; }
+.speaker-card {
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 1.5rem 1.25rem;
+  border: 1.5px solid var(--line);
+  text-align: center;
+  transition: all 0.25s;
+}
+.speaker-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(12,20,64,0.08); }
+.speaker-card img {
+  width: 80px; height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 0.875rem;
+  display: block;
+  border: 2px solid var(--line);
+}
+.speaker-card .sp-name { font-family: 'Instrument Serif', serif; font-size: 1rem; font-weight: 400; margin-bottom: 0.25rem; line-height: 1.2; }
+.speaker-card .sp-role { font-size: 0.72rem; color: var(--red); font-weight: 600; letter-spacing: 0.02em; margin-bottom: 0.75rem; line-height: 1.3; }
+.speaker-card .sp-logo { height: 30px; width: auto; object-fit: contain; margin: 0 auto; display: block; max-width: 140px; border-radius: 0; border: none; }
+
+/* SPONSORS */
+.sponsors-section { padding: 5rem 3rem; max-width: 1240px; margin: 0 auto; }
+.sponsors-section h2 { font-family: 'Instrument Serif', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; margin-bottom: 3rem; text-align: center; }
+.sponsors-tier { margin-bottom: 3rem; }
+.sponsors-tier-label { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--line); }
+.sponsors-logos-row { display: flex; align-items: center; justify-content: flex-start; gap: 2.5rem; flex-wrap: wrap; }
+.sponsors-logos-row img { height: 36px; width: auto; object-fit: contain; opacity: 0.55; filter: grayscale(0.4); transition: all 0.2s; }
+.sponsors-logos-row img:hover { opacity: 1; filter: grayscale(0); }
+
+/* ══════════ VIAGEM 2026 ══════════ */
+
+.trip-hero {
+  padding: 5rem 3rem 4rem;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: center;
+}
+.trip-hero h1 { font-family: 'Instrument Serif', serif; font-size: clamp(3rem, 7vw, 7rem); font-weight: 400; line-height: 0.92; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+.trip-hero h1 em { font-style: italic; color: var(--cyan); }
+.trip-hero .lead { font-size: 1.1rem; line-height: 1.65; color: var(--muted); margin-bottom: 2rem; max-width: 520px; }
+.trip-meta-panel {
+  background: var(--ink);
+  border-radius: 16px;
+  padding: 2.5rem;
+  color: #fff;
+}
+.trip-meta-row { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.trip-meta-row:last-child { border-bottom: none; }
+.trip-meta-key { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.trip-meta-val { font-weight: 600; font-size: 0.9rem; }
+.trip-meta-val.cyan { color: var(--cyan); }
+.trip-meta-val.orange { color: var(--orange); }
+.trip-meta-val.red { color: var(--red); }
+.trip-meta-val.lime { color: var(--lime); }
+
+.trip-features { padding: 4rem 3rem; background: var(--bg-2); }
+.trip-features-inner { max-width: 1240px; margin: 0 auto; }
+.trip-features-inner h2 { font-family: 'Instrument Serif', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; margin-bottom: 2.5rem; }
+.trip-features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.trip-feature-card {
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1.5px solid var(--line);
+  transition: all 0.25s;
+}
+.trip-feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(12,20,64,0.08); }
+.trip-icon { font-size: 2rem; margin-bottom: 1rem; }
+.trip-feature-card h3 { font-family: 'Instrument Serif', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 0.75rem; }
+.trip-feature-card p { font-size: 0.88rem; line-height: 1.65; color: var(--muted); }
+
+.trip-includes { padding: 4rem 3rem; max-width: 1240px; margin: 0 auto; }
+.trip-includes h2 { font-family: 'Instrument Serif', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 400; margin-bottom: 2rem; }
+.includes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.include-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  padding: 1.25rem;
+  background: var(--bg-2);
+  border-radius: 12px;
+  border: 1.5px solid var(--line);
+}
+.include-check {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--cyan);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-top: 1px;
+}
+.include-item p { font-size: 0.92rem; line-height: 1.5; color: var(--ink); }
+
+.trip-cta { padding: 5rem 3rem; background: var(--ink); }
+.trip-cta-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4rem;
+  align-items: center;
+}
+.trip-cta-inner h2 { font-family: 'Instrument Serif', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 400; color: #fff; line-height: 1.05; margin-bottom: 1rem; }
+.trip-cta-inner h2 em { font-style: italic; color: var(--cyan); }
+.trip-cta-inner p { font-size: 1rem; line-height: 1.65; color: rgba(255,255,255,0.55); }
+.trip-cta-right { text-align: center; flex-shrink: 0; }
+.trip-price { font-family: 'Instrument Serif', serif; font-size: 2.5rem; font-style: italic; color: #fff; margin-bottom: 0.25rem; }
+.trip-price-note { font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; }
+
+/* FLOAT GROUP — WhatsApp + AI */
+.float-group {
+  position: fixed;
+  bottom: max(2rem, env(safe-area-inset-bottom, 0px) + 1rem);
+  right: max(2rem, env(safe-area-inset-right, 0px) + 0.5rem);
+  z-index: 100;
+}
+.float-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  text-decoration: none;
+  transition: transform 0.25s, box-shadow 0.25s;
+  padding: 0 1.6rem 0 0.9rem;
+  height: 58px;
+  white-space: nowrap;
+}
+.float-ai {
+  background: var(--ink);
+  color: #fff;
+  box-shadow: 0 8px 28px rgba(12,20,64,0.35), 0 0 0 0 rgba(40,184,176,0);
+  animation: float-pulse 3s ease-in-out infinite;
+}
+@keyframes float-pulse {
+  0%, 100% { box-shadow: 0 8px 28px rgba(12,20,64,0.35), 0 0 0 0 rgba(40,184,176,0.4); }
+  50%       { box-shadow: 0 12px 36px rgba(12,20,64,0.45), 0 0 0 8px rgba(40,184,176,0); }
+}
+.float-ai:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 44px rgba(12,20,64,0.5);
+  animation: none;
+}
+.float-ai-icon {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, var(--red) 0%, var(--purple) 100%);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+.float-ai-text { display: flex; flex-direction: column; line-height: 1.2; }
+.float-ai-text strong { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.float-ai-text span { font-size: 0.66rem; color: rgba(255,255,255,0.5); font-weight: 400; }
+
+/* AI MODAL */
+.ai-modal { position: fixed; inset: 0; background: rgba(12,20,64,0.6); backdrop-filter: blur(8px); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 1.5rem; }
+.ai-modal.open { display: flex; }
+.ai-modal-box { background: var(--bg); border-radius: 20px; padding: 2.5rem; width: 100%; max-width: 520px; box-shadow: 0 24px 80px rgba(0,0,0,0.22); position: relative; border: 1.5px solid var(--line); }
+.ai-modal-close { position: absolute; top: 1.25rem; right: 1.25rem; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--muted); transition: color 0.2s; line-height: 1; }
+.ai-modal-close:hover { color: var(--red); }
+.ai-modal-title { font-family: 'Instrument Serif', serif; font-size: 1.9rem; margin-bottom: 0.5rem; color: var(--ink); }
+.ai-modal-sub { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; }
+.ai-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--line); padding-bottom: 1rem; flex-wrap: wrap; }
+.ai-tab { background: var(--bg-2); border: 1.5px solid var(--line); border-radius: 100px; padding: 0.4rem 1rem; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s; color: var(--muted); }
+.ai-tab.active, .ai-tab:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+.ai-input-wrap { display: flex; gap: 0.75rem; }
+.ai-modal-input { flex: 1; padding: 0.875rem 1.1rem; border-radius: 10px; border: 1.5px solid var(--line); font-family: inherit; font-size: 0.9rem; outline: none; transition: border 0.2s; background: var(--bg); color: var(--ink); }
+.ai-modal-input:focus { border-color: var(--cyan); }
+.ai-modal-input::placeholder { color: var(--muted); opacity: 0.7; }
+.ai-send { background: var(--ink); color: #fff; border: none; border-radius: 10px; padding: 0 1.25rem; cursor: pointer; font-size: 1rem; transition: background 0.2s; flex-shrink: 0; }
+.ai-send:hover { background: var(--blue); }
+.ai-result { margin-top: 1.25rem; padding: 1.25rem; background: var(--bg-2); border-radius: 10px; font-size: 0.9rem; line-height: 1.7; color: var(--ink); border: 1px solid var(--line); max-height: 260px; overflow-y: auto; display: none; }
+.ai-loader { display: inline-block; width: 14px; height: 14px; border: 2px solid var(--cyan); border-bottom-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: middle; margin-right: 6px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.ai-modal-wa { margin-top: 1.25rem; border-top: 1px solid var(--line); padding-top: 1.25rem; }
+.ai-modal-wa a { display: flex; align-items: center; justify-content: center; gap: 0.6rem; width: 100%; padding: 0.8rem; border-radius: 10px; border: 1.5px solid rgba(37,211,102,0.35); color: #1a9e4c; background: rgba(37,211,102,0.06); font-size: 0.86rem; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+.ai-modal-wa a:hover { background: rgba(37,211,102,0.12); border-color: #25d366; }
+.ai-modal-wa p { font-size: 0.78rem; color: var(--muted); text-align: center; margin-bottom: 0.65rem; }
+
+/* AI HOME SECTION */
+.ai-home-section { padding: 5rem 3rem; background: var(--ink); position: relative; overflow: hidden; }
+.ai-home-section::before { content: ''; position: absolute; top: -80px; right: -80px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(40,184,176,0.12) 0%, transparent 70%); pointer-events: none; }
+.ai-home-section::after { content: ''; position: absolute; bottom: -60px; left: -60px; width: 350px; height: 350px; background: radial-gradient(circle, rgba(155,85,240,0.1) 0%, transparent 70%); pointer-events: none; }
+.ai-home-inner { max-width: 1240px; margin: 0 auto; position: relative; z-index: 1; }
+.ai-home-top { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 3.5rem; }
+.ai-home-top h2 { font-family: 'Instrument Serif', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 400; color: #fff; line-height: 1.05; letter-spacing: -0.02em; }
+.ai-home-top h2 em { font-style: italic; color: var(--cyan); }
+.ai-home-top p { font-size: 1rem; line-height: 1.65; color: rgba(255,255,255,0.55); }
+.ai-tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.ai-tool-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; cursor: pointer; transition: all 0.25s; position: relative; overflow: hidden; }
+.ai-tool-card::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.3s; }
+.ai-tool-card.c1::before { background: linear-gradient(135deg, rgba(232,53,74,0.1), rgba(155,85,240,0.1)); }
+.ai-tool-card.c2::before { background: linear-gradient(135deg, rgba(40,184,176,0.1), rgba(58,114,232,0.1)); }
+.ai-tool-card.c3::before { background: linear-gradient(135deg, rgba(245,149,32,0.1), rgba(245,200,0,0.1)); }
+.ai-tool-card:hover { border-color: rgba(255,255,255,0.22); transform: translateY(-4px); }
+.ai-tool-card:hover::before { opacity: 1; }
+.ai-tool-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+.ai-tool-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 0.5rem; }
+.ai-tool-card h3 { font-family: 'Instrument Serif', serif; font-size: 1.25rem; font-weight: 400; color: #fff; margin-bottom: 0.6rem; }
+.ai-tool-card p { font-size: 0.82rem; line-height: 1.6; color: rgba(255,255,255,0.5); margin-bottom: 1.25rem; }
+.ai-tool-btn { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 100px; padding: 0.45rem 1rem; transition: all 0.2s; font-family: 'DM Sans', sans-serif; cursor: pointer; }
+.ai-tool-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.ai-badge-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.75rem; }
+.ai-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 100px; padding: 0.3rem 0.85rem; font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.ai-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); animation: pulse 2s ease-in-out infinite; }
+
+@media (max-width: 991px) {
+  .ai-home-top { grid-template-columns: 1fr; gap: 1.5rem; }
+  .ai-tools-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .ai-home-section { padding: 4rem 1.5rem; }
+  .float-group { bottom: 1.25rem; right: 1.25rem; }
+  .float-btn { height: 50px; font-size: 0.82rem; padding: 0 1.2rem 0 0.8rem; }
+  .float-ai-icon { width: 32px; height: 32px; }
+}
+
+/* FOOTER */
+footer { background: var(--ink); color: rgba(255,255,255,0.6); padding: 4rem 3rem 2rem; margin-top: 0; }
+.footer-inner { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand { font-family: 'Instrument Serif', serif; font-size: 1.8rem; color: #fff; margin-bottom: 0.5rem; }
+.footer-brand em { font-style: italic; color: var(--cyan); }
+.footer-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+.footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1.25rem; }
+.footer-col a { display: block; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; margin-bottom: 0.75rem; cursor: pointer; transition: color 0.2s; }
+.footer-col a:hover { color: #fff; }
+.footer-bottom { max-width: 1240px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 991px) {
+  .nav-center { display: none; }
+  .nav-hamburger { display: flex; }
+  .hero-row { grid-template-columns: 1fr; gap: 2rem; }
+  .home-cards { grid-template-columns: 1fr; }
+  .home-founder { grid-template-columns: 1fr; gap: 2rem; }
+  .numbers-strip { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; padding: 2rem; }
+  .num-block { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1rem 0; }
+  .event-info { grid-template-columns: 1fr; }
+  .purpose-grid { grid-template-columns: repeat(2, 1fr); }
+  .featured-card { grid-template-columns: 1fr; }
+  .featured-card img { max-width: 200px; }
+  .trip-hero { grid-template-columns: 1fr; }
+  .trip-features-grid { grid-template-columns: repeat(2, 1fr); }
+  .trip-cta-inner { grid-template-columns: 1fr; }
+  .photo-grid { grid-template-columns: repeat(2, 1fr); }
+  .photo-grid img.tall { aspect-ratio: 4/3; grid-row: auto; }
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .includes-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  nav { padding: 0 1.5rem; }
+  .hero { padding: 3rem 1.5rem 2rem; }
+  .container, .home-cards, .home-founder, .video-section, .event-info,
+  .topics-section .topics-inner, .purpose-section, .agenda-section,
+  .featured-section, .speakers-section .speakers-inner, .sponsors-section,
+  .trip-hero, .trip-features-inner, .trip-includes, .trip-cta-inner, .partners-strip { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .numbers-strip { padding: 1.5rem; }
+  .purpose-grid { grid-template-columns: 1fr; }
+  .trip-features-grid { grid-template-columns: 1fr; }
+  .photo-grid { grid-template-columns: 1fr; }
+  .speakers-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
+  .footer-inner { padding: 0 1.5rem; }
+  footer { padding: 3rem 1.5rem 2rem; }
+  .mobile-link { font-size: 2rem; }
+  .dual-cta { padding: 0 1.5rem; }
+  .retro-home { padding: 0 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- RAINBOW -->
+<div class="rainbow"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" onclick="showPage('home')">
+    <div class="logo-crop">
+      <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68715a91a292e2dc87c61c33_BRazil%20Korea.webp" alt="Brazil Korea Conference">
+      <span class="logo-mask"></span>
+    </div>
+  </a>
+  <div class="nav-center">
+    <a id="nav-home"    onclick="showPage('home')"    class="active">Home</a>
+    <a id="nav-bkc2025" onclick="showPage('bkc2025')">BKC 25/26</a>
+    <a id="nav-viagem"  onclick="showPage('viagem')">Viagem 2026</a>
+    <a id="nav-eventos" onclick="showPage('eventos')">Eventos</a>
+  </div>
+  <div class="nav-right">
+    <a href="https://forms.gle/N8JkrxypsuiuzFjF6" target="_blank" class="nav-cta-outline">Seja patrocinador</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqP_l-zwT3c-DPyRnr0EAZO2mMIlW3yZHeZYMZW7EAuMBuAA/viewform" target="_blank" class="nav-cta">Join the official trip →</a>
+    <div class="nav-hamburger" onclick="openMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" aria-modal="true" role="dialog" aria-label="Menu de navegação">
+  <div class="mobile-menu-top">
+    <span class="mobile-menu-logo">Brazil <em>×</em> Korea</span>
+    <button class="mobile-menu-close" onclick="closeMenu()" aria-label="Fechar menu">✕</button>
+  </div>
+  <div class="nav-links">
+    <a class="mobile-link" onclick="showPage('home');closeMenu()">Home</a>
+    <a class="mobile-link" onclick="showPage('bkc2025');closeMenu()">BKC 25/26</a>
+    <a class="mobile-link" onclick="showPage('viagem');closeMenu()">Viagem 2026</a>
+    <a class="mobile-link" onclick="showPage('eventos');closeMenu()">Eventos</a>
+  </div>
+  <div class="mobile-menu-footer">
+    <a class="mobile-cta-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdqP_l-zwT3c-DPyRnr0EAZO2mMIlW3yZHeZYMZW7EAuMBuAA/viewform" target="_blank">Join the official trip →</a>
+    <a class="mobile-cta-secondary" href="https://forms.gle/N8JkrxypsuiuzFjF6" target="_blank">Seja patrocinador →</a>
+  </div>
+</div>
+
+<!-- ══════════ HOME ══════════ -->
+<div class="page active" id="page-home">
+
+  <div class="hero">
+    <div class="hero-badge"><span class="pulse"></span> 14ª Edição · Setembro 2026 · Londres, Reino Unido</div>
+    <h1>Brazil <span class="grad">Korea</span><br>Conference <em style="font-family:'Instrument Serif',serif;font-weight:400;">2026.</em></h1>
+    <div class="hero-row">
+      <p class="hero-lead">Fortalecendo laços bilaterais entre <em>Brasil e Coreia</em> desde 2016 — negócios, inovação e conexões reais.</p>
+      <div class="hero-actions">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqP_l-zwT3c-DPyRnr0EAZO2mMIlW3yZHeZYMZW7EAuMBuAA/viewform" target="_blank" class="btn btn-dark">Garantir vaga 2026 <span class="arrow">→</span></a>
+        <a onclick="showPage('bkc2025')" class="hero-link">Ver a conferência BKC 2025 →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="numbers-strip">
+    <div class="num-block"><div class="num-val c1">14ª</div><div class="num-label">Edição</div></div>
+    <div class="num-block"><div class="num-val c2">50+</div><div class="num-label">Palestrantes</div></div>
+    <div class="num-block"><div class="num-val c3">1.000</div><div class="num-label">Executivos</div></div>
+    <div class="num-block"><div class="num-val c4">2016</div><div class="num-label">Fundação</div></div>
+  </div>
+
+  <div class="home-cards">
+    <div class="home-card bkc25" onclick="showPage('bkc2025')">
+      <div class="home-card-accent"></div>
+      <div class="home-card-tag">// 13ª Edição · 2025 · Retrospectiva</div>
+      <h3>BKC<br>2025.</h3>
+      <p>A conferência deste ano reuniu 50+ palestrantes e mais de 400 executivos na FKI Tower em Seul. Confira agenda completa, palestrantes e fotos.</p>
+      <div class="home-card-arrow">Explorar o BKC 2025 →</div>
+    </div>
+    <div class="home-card viagem" onclick="showPage('viagem')">
+      <div class="home-card-accent"></div>
+      <div class="home-card-tag">// 14ª Edição · 2026</div>
+      <h3>Viagem<br>2026.</h3>
+      <p>Inscrições abertas para a delegação oficial BKC 2026 em Londres. Vagas limitadas para empresários e líderes selecionados que querem construir pontes reais.</p>
+      <div class="home-card-arrow">Saber mais sobre a viagem →</div>
+    </div>
+    <div class="home-card" style="background:linear-gradient(135deg,#0c1440 0%,#1a2460 60%,#0d3b6e 100%);border:1px solid rgba(255,255,255,0.08);" onclick="showPage('eventos')">
+      <div class="home-card-accent" style="background:linear-gradient(90deg,var(--cyan),var(--blue));"></div>
+      <div class="home-card-tag" style="color:var(--cyan);">// Próximos eventos · 2026</div>
+      <h3 style="color:#fff;">Eventos<br>2026.</h3>
+      <p style="color:rgba(255,255,255,0.7);">Jantares, harmonizações e encontros exclusivos. Vagas limitadas para quem quer viver o universo Brasil–Coreia além da conferência principal.</p>
+      <div class="home-card-arrow" style="color:var(--cyan);">Ver todos os eventos →</div>
+    </div>
+  </div>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item c-red">BKC <em>2016</em></span>
+      <span class="marquee-item c-orange">BKC <em>2017</em></span>
+      <span class="marquee-item c-yellow">BKC <em>2018</em></span>
+      <span class="marquee-item c-lime">BKC <em>2019</em></span>
+      <span class="marquee-item c-cyan">BKC <em>2020</em></span>
+      <span class="marquee-item c-blue">BKC <em>2021</em></span>
+      <span class="marquee-item c-purple">BKC <em>2022</em></span>
+      <span class="marquee-item c-red">BKC <em>2023</em></span>
+      <span class="marquee-item c-orange">BKC <em>2024</em></span>
+      <span class="marquee-item c-yellow">BKC <em>2025</em></span>
+      <span class="marquee-item c-cyan">BKC <em>2026 ✦</em></span>
+      <span class="marquee-item c-purple">BKC <em>2027 – NY ✦</em></span>
+      <span class="marquee-item c-red">BKC <em>2016</em></span>
+      <span class="marquee-item c-orange">BKC <em>2017</em></span>
+      <span class="marquee-item c-yellow">BKC <em>2018</em></span>
+      <span class="marquee-item c-lime">BKC <em>2019</em></span>
+      <span class="marquee-item c-cyan">BKC <em>2020</em></span>
+      <span class="marquee-item c-blue">BKC <em>2021</em></span>
+      <span class="marquee-item c-purple">BKC <em>2022</em></span>
+      <span class="marquee-item c-red">BKC <em>2023</em></span>
+      <span class="marquee-item c-orange">BKC <em>2024</em></span>
+      <span class="marquee-item c-yellow">BKC <em>2025</em></span>
+      <span class="marquee-item c-cyan">BKC <em>2026 ✦</em></span>
+      <span class="marquee-item c-purple">BKC <em>2027 – NY ✦</em></span>
+    </div>
+  </div>
+
+  <!-- DUAL CTA — DELEGAÇÃO + PATROCÍNIO -->
+  <div class="dual-cta">
+    <div class="dual-cta-grid">
+      <div class="dual-cta-card delegacao">
+        <span class="dual-cta-eyebrow">// Participar · 14ª Edição</span>
+        <h3 class="dual-cta-h">Delegação <em>Oficial</em><br>BKC 2026.</h3>
+        <p class="dual-cta-p">Faça parte da delegação brasileira que vai a Londres em setembro de 2026. Vagas limitadas para empresários e líderes selecionados.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqP_l-zwT3c-DPyRnr0EAZO2mMIlW3yZHeZYMZW7EAuMBuAA/viewform" target="_blank" class="dual-cta-btn">Inscrever-se na delegação <span>→</span></a>
+      </div>
+      <div class="dual-cta-card sponsor">
+        <span class="dual-cta-eyebrow">// Apoiar · Visibilidade Internacional</span>
+        <h3 class="dual-cta-h">Seja <em>patrocinador</em><br>do BKC 2026.</h3>
+        <p class="dual-cta-p">Conecte sua marca a um evento de alto impacto internacional. Visibilidade online e presencial, networking com líderes do setor e materiais promocionais inclusos.</p>
+        <a href="https://forms.gle/N8JkrxypsuiuzFjF6" target="_blank" class="dual-cta-btn">Quero patrocinar <span>→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- RETROSPECTIVA EDIÇÕES ANTERIORES -->
+  <div class="retro-home">
+    <div class="retro-head">
+      <div class="retro-head-left">
+        <div class="section-label">// Retrospectiva</div>
+        <h2>O que rolou nas <em>últimas edições</em>.</h2>
+        <p>Em 2024, a 12ª edição reuniu líderes em São Paulo. Em 2025, a 13ª levou a conferência para a FKI Tower, em Seul, com mais de 400 executivos. Em 2026, a 14ª edição vai a Londres, Reino Unido.</p>
+      </div>
+      <a onclick="showPage('bkc2025')" class="retro-link-all">Ver tudo do BKC 2025 →</a>
+    </div>
+    <div class="retro-body">
+      <div class="retro-video" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/DQ8x9xMNM2Q?autoplay=1\' allow=\'autoplay; encrypted-media\' allowfullscreen></iframe>'">
+        <div class="retro-video-thumb" style="background-image: url('https://img.youtube.com/vi/DQ8x9xMNM2Q/maxresdefault.jpg');">
+          <div class="retro-video-play">▶</div>
+          <div class="retro-video-caption">12ª edição · 2024 · Resumo em vídeo</div>
+        </div>
+      </div>
+      <div class="retro-mini-gallery">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68748df82941e0ce627619da_25_10_2473.webp" alt="BKC 2025" onclick="showPage('bkc2025')">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68757a4a80ce66565eef7be7_IMG_1206%201.webp" alt="BKC 2025" onclick="showPage('bkc2025')">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/687579d03a8c97b4d6984251_IMG_0888.webp" alt="BKC 2025" onclick="showPage('bkc2025')">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/687579ce84c0157f636d3816_IMG_1017.remini-enhanced.webp" alt="BKC 2025" onclick="showPage('bkc2025')">
+        <div class="retro-mini-caption">13ª edição · 2025 · Seul</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="home-founder">
+    <div class="founder-left">
+      <div class="section-label">A conferência</div>
+      <h2>Uma ponte entre dois <em>continentes.</em></h2>
+      <p>Fundada em 2016 pela advogada Su Jung Ko, a Brazil Korea Conference nasceu como uma plataforma de aprendizado para empreendedores e profissionais brasileiros e coreanos.</p>
+      <p>Em quase uma década, evoluímos para o principal ponto de encontro entre os dois países — uma rede densa de líderes empresariais que constroem, juntos, oportunidades em tecnologia, inovação e negócios bilaterais.</p>
+      <div class="founder-card">
+        <div class="founder-avatar">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/66846bb27bc9a01ed48e533c_Captura%20de%20Tela%202024-01-15%20a%CC%80s%2008.35%201.png" alt="Su Jung Ko">
+        </div>
+        <div class="founder-info">
+          <strong>Su Jung Ko</strong>
+          <span>Fundadora · Advogada · Golden Hawk Consulting</span>
+        </div>
+      </div>
+    </div>
+    <div class="founder-quote">
+      <blockquote>"Quando comecei a BKC em 2016, meu objetivo era simples: criar pontes reais entre dois países que tinham muito a oferecer um ao outro. Quase uma década depois, o que vejo me enche de orgulho — empresas que nasceram dessas conexões, parcerias que atravessaram fronteiras."</blockquote>
+      <cite>— Su Jung Ko, Fundadora da Brazil Korea Conference</cite>
+    </div>
+  </div>
+
+  <!-- INSTAGRAM REELS DO BKC -->
+  <div class="ig-section">
+   <div class="ig-inner">
+    <div class="ig-header">
+      <div class="ig-header-left">
+        <div class="ig-header-pic">
+          <div class="ig-header-pic-inner">
+            <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68715a91a292e2dc87c61c33_BRazil%20Korea.webp" alt="Brazil Korea Conference">
+          </div>
+        </div>
+        <div class="ig-header-text">
+          <div class="ig-eyebrow">// Bastidores</div>
+          <h2>Acompanhe o <em>BKC</em> no Instagram.</h2>
+          <div class="ig-handle"><a href="https://www.instagram.com/brazilkoreaconference/" target="_blank" rel="noopener noreferrer">@brazilkoreaconference</a></div>
+        </div>
+      </div>
+      <a href="https://www.instagram.com/brazilkoreaconference/reels/" target="_blank" rel="noopener noreferrer" class="ig-link-all">
+        Ver todos os reels →
+      </a>
+    </div>
+
+    <!--
+      ╭─────────────────────────────────────────────────────────────╮
+      │  COMO TROCAR OS REELS:                                       │
+      │  Substitua a div .ig-reel-placeholder pelo iframe abaixo:   │
+      │  <iframe src="https://www.instagram.com/reel/CODIGO/embed"  │
+      │          allowtransparency="true" allow="encrypted-media">  │
+      │  </iframe>                                                   │
+      ╰─────────────────────────────────────────────────────────────╯
+    -->
+    <div class="ig-grid">
+      <div class="ig-reel">
+        <iframe src="https://www.instagram.com/reel/DYD3DmROYDq/embed/" allowtransparency="true" allowfullscreen="true" scrolling="no" frameborder="0"></iframe>
+      </div>
+      <div class="ig-reel">
+        <iframe src="https://www.instagram.com/reel/DXkCF-IDoU3/embed/" allowtransparency="true" allowfullscreen="true" scrolling="no" frameborder="0"></iframe>
+      </div>
+      <div class="ig-reel">
+        <iframe src="https://www.instagram.com/reel/DVcBwFfkSXi/embed/" allowtransparency="true" allowfullscreen="true" scrolling="no" frameborder="0"></iframe>
+      </div>
+    </div>
+   </div>
+  </div>
+
+  <!-- IA HOME SECTION -->
+  <div class="ai-home-section">
+    <div class="ai-home-inner">
+      <div class="ai-badge-row">
+        <div class="ai-badge"><span class="dot"></span> Powered by IA</div>
+        <div class="ai-badge">Assistente Oficial BKC</div>
+      </div>
+      <div class="ai-home-top">
+        <div>
+          <h2>Seu assistente<br><em>inteligente</em> para<br>Londres.</h2>
+        </div>
+        <p>Use a inteligência artificial para se preparar antes da viagem: traduza frases em coreano, descubra com quem fazer networking e tire dúvidas sobre a delegação BKC 2026 — tudo instantaneamente.</p>
+      </div>
+      <div class="ai-tools-grid">
+        <div class="ai-tool-card c1" onclick="openAiModal('networking')">
+          <span class="ai-tool-icon">🤝</span>
+          <div class="ai-tool-tag">// Networking</div>
+          <h3>Consultor de Conexões</h3>
+          <p>Descubra quais painéis e palestrantes são mais relevantes para o seu setor. Receba uma frase de abertura personalizada.</p>
+          <div class="ai-tool-btn">Usar agora ✦</div>
+        </div>
+        <div class="ai-tool-card c2" onclick="openAiModal('cultural')">
+          <span class="ai-tool-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" width="36" height="24" style="border-radius:4px;display:inline-block;vertical-align:middle;"><rect width="30" height="20" fill="#fff"/><rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="5.5" fill="#CD2E3A"/><path d="M15 4.5a5.5 5.5 0 0 1 0 11" fill="#003478"/><circle cx="15" cy="10" r="5.5" fill="none" stroke="#fff" stroke-width="0"/><g stroke="#000" stroke-width="0.7" opacity="0.85"><line x1="3" y1="3.5" x2="8" y2="8.5"/><line x1="4.5" y1="2" x2="9.5" y2="7"/><line x1="1.5" y1="5" x2="6.5" y2="10"/><line x1="21" y1="11.5" x2="26" y2="16.5"/><line x1="22.5" y1="10" x2="27.5" y2="15"/><line x1="19.5" y1="13" x2="24.5" y2="18"/><line x1="21" y1="3.5" x2="26" y2="8.5"/><line x1="22.5" y1="2" x2="27.5" y2="7"/><line x1="19.5" y1="5" x2="24.5" y2="10"/><line x1="3" y1="11.5" x2="8" y2="16.5"/><line x1="4.5" y1="10" x2="9.5" y2="15"/><line x1="1.5" y1="13" x2="6.5" y2="18"/></g></svg></span>
+          <div class="ai-tool-tag">// Cultura & Idioma</div>
+          <h3>Guia Cultural Coreano</h3>
+          <p>Traduza frases para o coreano formal com pronúncia. Receba dicas essenciais de etiqueta para o ambiente de negócios em Seul.</p>
+          <div class="ai-tool-btn">Usar agora ✦</div>
+        </div>
+        <div class="ai-tool-card c3" onclick="openAiModal('geral')">
+          <span class="ai-tool-icon">✨</span>
+          <div class="ai-tool-tag">// Assistente Geral</div>
+          <h3>Assistente BKC 2026</h3>
+          <p>Tire dúvidas sobre a viagem, logística, inscrições e tudo sobre a delegação oficial. Respostas rápidas em português.</p>
+          <div class="ai-tool-btn">Usar agora ✦</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="partners-strip">
+    <div class="partners-label">Marcas presentes na edição 2025</div>
+    <div class="partners-logos">
+      <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/66547f4eba6043678df93e23_Loogo_TozziniFreire_Positivo.webp" alt="TozziniFreire" style="height:48px;">
+      <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/66547f801b64fc973b0de444_Grant%201.webp" alt="Grant Thornton" style="height:48px;">
+    </div>
+  </div>
+
+</div><!-- /home -->
+
+<!-- ══════════ BKC 2025 ══════════ -->
+<div class="page" id="page-bkc2025">
+
+  <div class="page-hero">
+    <div class="section-label orange">// 13ª Edição · Outubro 2025 · Seul</div>
+    <h1>BKC <em>2025</em><br>em detalhe.</h1>
+    <p class="lead">A 13ª edição da Brazil Korea Conference reuniu líderes brasileiros e coreanos na FKI Tower, Seul, para um dia intenso de painéis, negócios e networking internacional.</p>
+  </div>
+
+  <!-- VIDEO LADO-A-LADO -->
+  <div class="video-side">
+    <div class="video-side-text">
+      <div class="section-label">// Resumo da edição anterior</div>
+      <h2>BKC <em>2024</em> em movimento.</h2>
+      <p>O vídeo abaixo é o resumo oficial da <strong>12ª edição (2024)</strong>, em São Paulo. O vídeo oficial da <strong>13ª edição (2025)</strong> em Seul será publicado em breve — enquanto isso, confira as fotos do evento mais abaixo.</p>
+      <p style="font-size:.85rem;color:var(--ink-2);">13ª edição · FKI Tower · 16 Out 2025 · 400+ executivos · 50+ palestrantes</p>
+    </div>
+    <div class="video-wrapper" style="cursor:pointer;" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/DQ8x9xMNM2Q?autoplay=1\' allow=\'autoplay; encrypted-media\' allowfullscreen></iframe>'">
+      <div class="retro-video-thumb" style="background-image: url('https://img.youtube.com/vi/DQ8x9xMNM2Q/maxresdefault.jpg');">
+        <div class="retro-video-play">▶</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE DAS EDIÇÕES -->
+  <div class="timeline-wrap">
+    <div class="timeline-head">
+      <div class="section-label">// História BKC</div>
+      <h2>Quase uma <em>década</em> construindo pontes.</h2>
+      <p>Desde 2016, cada edição da Brazil Korea Conference somou novos parceiros, palestrantes e oportunidades de negócios entre os dois países.</p>
+    </div>
+    <div class="timeline-track">
+      <div class="timeline-item"><div class="timeline-year">2016</div><div class="timeline-dot"></div><div class="timeline-edition">1ª edição</div></div>
+      <div class="timeline-item alt"><div class="timeline-edition">2ª edição</div><div class="timeline-dot"></div><div class="timeline-year">2017</div></div>
+      <div class="timeline-item"><div class="timeline-year">2018</div><div class="timeline-dot"></div><div class="timeline-edition">3ª edição</div></div>
+      <div class="timeline-item alt"><div class="timeline-edition">4ª edição</div><div class="timeline-dot"></div><div class="timeline-year">2019</div></div>
+      <div class="timeline-item"><div class="timeline-year">2020</div><div class="timeline-dot"></div><div class="timeline-edition">5ª · online</div></div>
+      <div class="timeline-item alt"><div class="timeline-edition">7ª–9ª</div><div class="timeline-dot"></div><div class="timeline-year">21–23</div></div>
+      <div class="timeline-item"><div class="timeline-year">2024</div><div class="timeline-dot"></div><div class="timeline-edition">12ª · SP</div></div>
+      <div class="timeline-item alt"><div class="timeline-edition">13ª · Seul</div><div class="timeline-dot"></div><div class="timeline-year">2025</div></div>
+      <div class="timeline-item future"><div class="timeline-year">2026</div><div class="timeline-dot"></div><div class="timeline-edition">14ª ✦ Londres</div></div>
+      <div class="timeline-item alt future"><div class="timeline-edition">15ª · NY</div><div class="timeline-dot"></div><div class="timeline-year">2027</div></div>
+    </div>
+  </div>
+
+  <!-- PHOTO GRID -->
+  <div class="photo-section">
+    <div class="section-label ink" style="max-width:1240px;margin:0 auto 1.5rem;display:flex;">Galeria de fotos</div>
+    <div class="photo-grid">
+      <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68748df82941e0ce627619da_25_10_2473.webp" alt="BKC 2025" class="tall">
+      <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68757a4a80ce66565eef7be7_IMG_1206%201.webp" alt="BKC 2025">
+      <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/687579d03a8c97b4d6984251_IMG_0888.webp" alt="BKC 2025">
+      <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/687579ce84c0157f636d3816_IMG_1017.remini-enhanced.webp" alt="BKC 2025">
+      <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/6875797835616a285f479d32_IMG_0761.webp" alt="BKC 2025">
+      <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68757977305b11b7dd8c4ba6_25_10_2413.webp" alt="BKC 2025">
+      <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/6874925db4646b72a285b5d4_IMG_1387.webp" alt="BKC 2025">
+      <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/6874925db3064782ad7db393_IMG_0947.webp" alt="BKC 2025">
+    </div>
+  </div>
+
+  <!-- EVENT INFO -->
+  <div class="event-info">
+    <div class="event-info-card venue">
+      <h3>Local e Data</h3>
+      <div class="event-meta">
+        <div class="event-meta-row">
+          <span class="event-meta-key">Data</span>
+          <span class="event-meta-val orange">16 de Outubro de 2025</span>
+        </div>
+        <div class="event-meta-row">
+          <span class="event-meta-key">Dia</span>
+          <span class="event-meta-val">Quinta-feira (horário de Seul)</span>
+        </div>
+        <div class="event-meta-row">
+          <span class="event-meta-key">Horário</span>
+          <span class="event-meta-val">8h às 18h (horário de Seul)</span>
+        </div>
+        <div class="event-meta-row">
+          <span class="event-meta-key">Venue</span>
+          <span class="event-meta-val cyan">FKI Tower, Seul, Coreia</span>
+        </div>
+        <div class="event-meta-row">
+          <span class="event-meta-key">Público</span>
+          <span class="event-meta-val">400+ executivos</span>
+        </div>
+        <div class="event-meta-row">
+          <span class="event-meta-key">Edição</span>
+          <span class="event-meta-val">13ª · BKC 2025</span>
+        </div>
+      </div>
+    </div>
+    <div class="event-info-card purpose">
+      <h3>Propósito do Evento</h3>
+      <p style="margin-bottom:1.25rem;">Estabelecer conexões significativas e reunir as ideias mais inovadoras com profissionais altamente qualificados, promovendo o empreendedorismo por meio da colaboração entre Brasil e Coreia do Sul.</p>
+      <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68c950272632a260aeb3e8e4_66387e727a69f37938f41c16_FKI-Headquarters-01.jpg" alt="FKI Tower" style="width:100%;border-radius:10px;object-fit:cover;height:180px;">
+    </div>
+  </div>
+
+  <!-- PURPOSE CARDS -->
+  <div class="purpose-section">
+    <div class="section-label">Pilares da conferência</div>
+    <div class="purpose-grid">
+      <div class="purpose-card">
+        <div class="purpose-icon">🤝</div>
+        <h3>Conexão de Valor</h3>
+        <p>Fortalecendo laços e gerando valor mútuo por meio do evento.</p>
+      </div>
+      <div class="purpose-card">
+        <div class="purpose-icon">📚</div>
+        <h3>Aprendizado</h3>
+        <p>Expandindo horizontes por meio da troca de conhecimento entre Brasil e Coreia.</p>
+      </div>
+      <div class="purpose-card">
+        <div class="purpose-icon">💼</div>
+        <h3>Negócios</h3>
+        <p>Descubra novas oportunidades de negócios no encontro Brasil–Coreia do Sul.</p>
+      </div>
+      <div class="purpose-card">
+        <div class="purpose-icon">💬</div>
+        <h3>Debates</h3>
+        <p>Promovendo discussões enriquecedoras sobre cooperação, inovação e tecnologia.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPICS -->
+  <div class="topics-section">
+    <div class="topics-inner">
+      <div class="section-label">Temas abordados</div>
+      <h2>Conteúdo da Conferência</h2>
+      <div class="topics-cloud">
+        <div class="topic-pill">Infraestrutura</div>
+        <div class="topic-pill">Carreira Corporativa</div>
+        <div class="topic-pill">E-Commerce</div>
+        <div class="topic-pill">Ecossistema de Startups</div>
+        <div class="topic-pill">Energia Renovável</div>
+        <div class="topic-pill">Visto para Empreendedores</div>
+        <div class="topic-pill">PI no Setor de Games</div>
+        <div class="topic-pill">Investimento em Startups</div>
+        <div class="topic-pill">Indústria de Joias</div>
+        <div class="topic-pill">Leis de Incentivo</div>
+        <div class="topic-pill">Marketing Digital</div>
+        <div class="topic-pill">Mercado de Games</div>
+        <div class="topic-pill">Política Econômica</div>
+        <div class="topic-pill">Silicon Valley & Fintech</div>
+        <div class="topic-pill">Cidades Inteligentes</div>
+        <div class="topic-pill">Tratado Tributário Brasil-Coreia</div>
+        <div class="topic-pill">Investidores em Inovação</div>
+        <div class="topic-pill">K-Beauty</div>
+        <div class="topic-pill">Descarbonização</div>
+        <div class="topic-pill">Mercado de Carbono</div>
+        <div class="topic-pill">Venture Capital</div>
+        <div class="topic-pill">Relações Bilaterais</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AGENDA -->
+  <div class="agenda-section">
+    <div class="section-label orange">Programação</div>
+    <h2>Agenda BKC 2025</h2>
+    <div class="accordion">
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="accordion-time">Apresentação</span>
+          <span class="accordion-title">Abertura da 13ª Edição</span>
+          <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p><strong>Su Jung Ko</strong>, fundadora da Brazil Korea Conference e sócia-fundadora da Golden Hawk Consulting<br>
+          <strong>Soo Han Kim</strong>: correspondente da KBS, uma das maiores emissoras de televisão da Coreia no Brasil</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="accordion-time">14h – 14h15</span>
+          <span class="accordion-title">Recepção Oficial</span>
+          <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p><strong>Han Byung Kil</strong>, Presidente do Conselho Coreano para América Latina e Caribe<br>
+          <strong>Embaixadora Márcia Donner</strong>, Embaixada Brasileira em Seul<br>
+          <strong>Vereador Marcio Kenji Ito</strong>, Câmara Municipal de São Paulo<br>
+          <strong>Marta Mitico</strong>, Presidente da Associação Brasileira de Especialistas em Migração<br>
+          <strong>Shin Jae Kim</strong>, Sócio da TozziniFreire responsável pelo Korea Desk<br>
+          <strong>Daniel Maranhão</strong>, CEO da Grant Thorton Brasil<br>
+          <strong>Alessandra Ribeiro</strong>, Sócia da Tendências Consultoria<br>
+          <strong>Su Jung Ko</strong>, Fundadora da Brazil Korea Conference</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="accordion-time">14h15 – 14h30</span>
+          <span class="accordion-title">Painel 1 · Relações Bilaterais Brasil–Coreia</span>
+          <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p><strong>Cenário político-econômico e desafios, incluindo reforma tributária</strong><br>
+          <strong>Ministro Flavio Melo</strong>: representante da Embaixada Brasileira em Seul<br>
+          <strong>Vinicius Pimenta Seixas</strong>: Sócio de tributação da Pinheiro Neto Advogados</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="accordion-time">14h30 – 14h45</span>
+          <span class="accordion-title">Painel 2 · Comércio Exterior e Distribuição</span>
+          <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p><strong>Comércio exterior, desenvolvimento de fábricas Brasil-Coreia e oportunidades de distribuição</strong><br>
+          <strong>Soo Han Kim</strong>: câmera e repórter exclusivo da KBC São Paulo<br>
+          <strong>Shin Jae Kim</strong>: Sócio TozziniFreire, Korea Desk<br>
+          <strong>Marcelo Souza</strong>: relações globais na SP Negócios</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="accordion-time">14h45 – 15h00</span>
+          <span class="accordion-title">Painel 3 · Investidor Coreano no Mercado Financeiro</span>
+          <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p><strong>O investidor coreano no mercado financeiro e as oportunidades entre Brasil e Coreia do Sul</strong><br>
+          <strong>Sung Won Kim</strong>: Diretor Executivo do Banco KEB Hana do Brasil<br>
+          <strong>Yuka Ono</strong>: Sócia no Asian Desk da Pinheiro Neto Advogados</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="accordion-time">15h00 – 15h15</span>
+          <span class="accordion-title">Painel 4 · Lei de Incentivo Cultural e Audiovisual</span>
+          <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p><strong>Lei de incentivo fiscal para projetos culturais e audiovisuais Brasil–Coreia</strong><br>
+          <strong>Veny Kim</strong>: Ex-Centro Cultural Coreano, fundadora da Transipot Art<br>
+          <strong>Seungyoun Lee</strong>: Artista, com exposições em Berlim, Museu de Arte de Seul e MMCA</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="accordion-time">15h15 – 15h30</span>
+          <span class="accordion-title">Painel 5 · Parcerias de Startups Brasil–Coreia</span>
+          <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p><strong>Parcerias Brasil–Coreia para expansão em novos mercados</strong><br>
+          <strong>Denis Santos</strong>: Sócio da Grider<br>
+          <strong>Acimar Lisboa</strong>: CEO da Nu Tecnologia</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="accordion-time">15h30 – 15h45</span>
+          <span class="accordion-title">Painel 6 · Desafios e Oportunidades em Novos Mercados</span>
+          <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p><strong>Desafios e oportunidades para entrada de produtos em novos mercados Brasil–Coreia</strong><br>
+          <strong>Min Gon Kim</strong>: Sócio do Korea Desk da Demarest Advogados<br>
+          <strong>Seong Ik Hwang</strong>: Sócio da KCL (firma coreana, M&A corporativo)<br>
+          <strong>Patrick Song</strong>: Sócio do JS Holding Group</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="accordion-time">15h45 – 16h00</span>
+          <span class="accordion-title">Painel 7 · Infraestrutura: Concessões e Empresas Coreanas</span>
+          <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p><strong>Mercado de infraestrutura: concessões no Brasil, financiamento e resolução de disputas</strong><br>
+          <strong>Lucas Simão</strong>: Sócio em Contencioso e Arbitragem, Pinheiro Neto Advogados<br>
+          <strong>Soraya Nunes</strong>: Superintendente da CAMARB<br>
+          <strong>Ye Lin Kim</strong>: Associada sênior em energia renovável e infraestrutura, Mattos Filho</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="accordion-time">16h00 – 16h15</span>
+          <span class="accordion-title">Painel 8 · Commodities, Produtos e Recursos Subsidiados</span>
+          <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p><strong>Commodities, produtos de valor agregado e projetos de inovação com recursos subsidiados</strong><br>
+          <strong>Rosana Nishi</strong>: Sócia da Macke Consultoria (BNDES e FINEP)<br>
+          <strong>Aline Iglesias</strong>: Gerente de Projetos da Brazil Korea Conference<br>
+          <strong>Kauê Machado</strong>: Sócio da Mitico Machado Advogados</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="accordion-time">16h15 – 16h30</span>
+          <span class="accordion-title">Painel 9 · Venture Capital: Tendências Brasil e Coreia</span>
+          <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p><strong>Cenário e tendências de investimento em Venture Capital no Brasil e na Coreia do Sul</strong><br>
+          <strong>Reinaldo Normand</strong>: Managing Director da Niu Ventures (fundo pré-seed)<br>
+          <strong>Stephanie Hong</strong>: Advogada de private equity e VC na Pinheiro Neto</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="accordion-time">16h30 – 16h45</span>
+          <span class="accordion-title">Painel 10 · Descarbonização e Mercado de Carbono</span>
+          <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p><strong>Descarbonização industrial, transição energética e mercado de crédito de carbono no Brasil e Coreia</strong><br>
+          <strong>Felipe Burman</strong>: Fundador e CEO da GLR Tech (descarbonização em estaleiros e mineração)<br>
+          <strong>Thiago Haberli</strong>: Sócio-fundador da Sustain Quality (certificação de edificações, Londres)<br>
+          <strong>Ye Lin Kim</strong>: Associada sênior em energia renovável, Mattos Filho</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="accordion-time">16h45 – 17h00</span>
+          <span class="accordion-title">Encerramento · Lançamento da 14ª Edição em Londres</span>
+          <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p><strong>Lançamento oficial da 14ª Brazil-Korea Conference em Londres, UK</strong><br>
+          <strong>Patrick Song</strong>: Sócio do JS Holding Group<br>
+          <strong>Thiago Haberli</strong>: Sócio-fundador da Sustain Quality, Londres (TBC)<br>
+          <strong>Su Jung Ko</strong>: Fundadora da Brazil Korea Conference</p>
+        </div>
+      </div>
+
+    </div><!-- /accordion -->
+  </div><!-- /agenda -->
+
+  <!-- FEATURED SPEAKERS -->
+  <div class="featured-section">
+    <div class="section-label purple">Palestrantes em Destaque</div>
+    <h2>Vozes que movem o BKC</h2>
+
+    <div class="featured-card">
+      <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/664df9727af9b239d7e3e4a8_Miller.webp" alt="Miller Augusto">
+      <div class="featured-info">
+        <h3>Miller Augusto</h3>
+        <div class="role">Founder · Ivy Group</div>
+        <img class="company-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/664ddc3400bf490b17e4e8e4_marcas.png" alt="Ivy Group">
+        <p>Fundador do Ivy Group, Miller Augusto liderou nove empresas em vários setores desde 2004, com foco em tecnologia. Sua trajetória se destaca pelo desenvolvimento de soluções inovadoras, incluindo integrações em larga escala, cibersegurança, software e inteligência artificial. Como investidor-anjo e mentor, colabora com startups no Brasil e no exterior.</p>
+      </div>
+    </div>
+
+    <div class="featured-card">
+      <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/66846bb27bc9a01ed48e533c_Captura%20de%20Tela%202024-01-15%20a%CC%80s%2008.35%201.png" alt="Su Jung Ko">
+      <div class="featured-info">
+        <h3>Su Jung Ko</h3>
+        <div class="role">Fundadora · Golden Hawk Consulting</div>
+        <img class="company-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68715e3c0a60b438edbe0ca4_Group%201000004373.webp" alt="Golden Hawk">
+        <p>Nascida na Coreia do Sul, Su Jung Ko é advogada formada pela USP, com pós-graduação no GV Law e LL.M. pela Georgetown University. Fundou a Golden Hawk Consulting, boutique de M&A focada em investimentos na Ásia. Já foi destaque em veículos como The Washington Post e The Financial Times. Assessora do Ministério da Justiça da Coreia para empresas coreanas na América Latina.</p>
+      </div>
+    </div>
+
+    <div class="featured-card">
+      <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/66a4130d6af6106c15846a0c_CEO.png" alt="Fabiano Montes Doca" style="object-position: center top;">
+      <div class="featured-info">
+        <h3>Fabiano "Boxer" Montes Doca</h3>
+        <div class="role">Embaixador da Brazil Korea Conference</div>
+        <p>Fabiano é faixa preta 5º Dan em Jiu-Jitsu, ex-boxeador profissional e primeiro atleta a lutar oficialmente em 1996 no Planeta Atlântida — encerrou a carreira invicto. Head Coach do BOXER MMA, que representou o RS em 11 países. Treinou atletas do UFC como Gabriel Gonzaga "Napão" e Mark Robison. Único brasileiro afiliado oficialmente ao departamento de marketing da LEVIS. Diretor de luta no filme "Mais Forte Que o Mundo", sobre a vida de José Aldo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUEST SPEAKERS GRID -->
+  <div class="speakers-section">
+    <div class="speakers-inner">
+      <div class="section-label ink">Grade de palestrantes</div>
+      <h2>Palestrantes Convidados</h2>
+      <div class="speakers-grid">
+
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/6653ca385167a8dd843179b5_Foto_site_alta_SJK%202.webp" alt="Shin Jae Kim">
+          <div class="sp-name">Shin Jae Kim</div>
+          <div class="sp-role">Partner</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/66547f4eba6043678df93e23_Loogo_TozziniFreire_Positivo.webp" alt="TozziniFreire">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/6685cc273de1c3a2550f1382_image%201486.png" alt="Sung Won Kim">
+          <div class="sp-name">Sung Won Kim</div>
+          <div class="sp-role">Executive Director</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68936a9563f238f59f7655aa_LOGOS_KEB_Brasil.png" alt="KEB Hana">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/686880b8d162b76298ef8c2b_image%201486.webp" alt="Yuka Ono">
+          <div class="sp-name">Yuka Ono</div>
+          <div class="sp-role">Partner</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/665ff6a775db431502c08cd7_logo-blue.svg" alt="Pinheiro Neto">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68688232d72eee28aff6a0df_bkz.webp" alt="Lucas Simão">
+          <div class="sp-name">Lucas Simão</div>
+          <div class="sp-role">Litigation & Arbitration Partner</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/665ff6a775db431502c08cd7_logo-blue.svg" alt="Pinheiro Neto">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/6875c9de546f2654d1989a38_image%201486.webp" alt="Felipe Burman">
+          <div class="sp-name">Felipe Burman</div>
+          <div class="sp-role">Founder & CEO</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/686883fa246b0b1dfb8b77b0_logo_glr_color_portrait.webp" alt="GLR Tech">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/6868b420745c184d8b867bac_image%201486.webp" alt="Reinaldo Normand">
+          <div class="sp-name">Reinaldo Normand</div>
+          <div class="sp-role">Co-Founder</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/6868b68ff23472642b1ebf1d_Mask%20group.webp" alt="Niu Ventures">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/6868b7033b72adb2738f7140_image%201486.webp" alt="Rosana Nishi">
+          <div class="sp-name">Rosana Nishi</div>
+          <div class="sp-role">Partner</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68748961e4d16b4c232ac63d_macke%20consultoria%201.webp" alt="Macke">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/6875d7fbc153272f5c0b9abb_image%201486.png" alt="Alessandra Ribeiro">
+          <div class="sp-name">Alessandra Ribeiro</div>
+          <div class="sp-role">Partner</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/66a41abff96d3e802b4db5cf_Tend%C3%AAncias.png" alt="Tendências">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68787924b4cea866ba894521_image%201486.png" alt="Seong Ik Hwang">
+          <div class="sp-name">Seong Ik Hwang</div>
+          <div class="sp-role">Attorney at Law</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/687878d40c4c124e778643ce_KCL-Logo-1280.jpg" alt="KCL">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68787b768cc0c68845ef5d58_image%201486.png" alt="Soo Han Kim">
+          <div class="sp-name">Soo Han Kim</div>
+          <div class="sp-role">CEO Probrazil Media</div>
+          <img class="sp-logo" src="fotos/probrazil-media.png" alt="Probrazil Media">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68a3b86295f043a7b90bfef7_image%201655.png" alt="Patrick Song">
+          <div class="sp-name">Patrick Song</div>
+          <div class="sp-role">Global Head of Business Development</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68a3b8ba17dc08a22801b3a3_logo.png" alt="">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68a3bad81cc0db672b8f1ac7_image%201657.png" alt="Min Go Kim">
+          <div class="sp-name">Min Gon Kim</div>
+          <div class="sp-role">Partner</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68a3baaf5d12e3d72f60bc4e_logo.svg" alt="Demarest">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68a3bb05c642ce1a6c0ed9a2_image%201656.png" alt="Seungyoun Lee">
+          <div class="sp-name">Seungyoun Lee</div>
+          <div class="sp-role">Artist</div>
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/6875d8b737112defe0c099c9_image%201486.png" alt="Veny Hyunah Kim">
+          <div class="sp-name">Veny Hyunah Kim</div>
+          <div class="sp-role">Founder & Creative Producer at ART TRANSiPOT</div>
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68ba0c7b9ae857407c1c631b_image%201657.png" alt="Soraya Nunes">
+          <div class="sp-name">Soraya Nunes</div>
+          <div class="sp-role">Superintendente</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68ba57de24e010f8bc061d28_camarb-logo-vertical-corbranco%201.png" alt="CAMARB">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68ba6178ef724aa45bd63c3e_image%201658.png" alt="Aline Iglesias">
+          <div class="sp-name">Aline Iglesias</div>
+          <div class="sp-role">Head of Projects</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68715a91a292e2dc87c61c33_BRazil%20Korea.webp" alt="BKC">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68ba64ed42bf1b03d9db76c0_image%201658.png" alt="Thiago Haberli">
+          <div class="sp-name">Thiago Haberli</div>
+          <div class="sp-role">Diretor</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68ba647c0c829b028b53b61d_sustainquality-footer-logo%201.png" alt="Sustain Quality">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68ba67ffcbbb8a132c8502f8_image%201659.png" alt="Denis Santos">
+          <div class="sp-name">Denis Santos</div>
+          <div class="sp-role">Co-Founder & CMO</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68ba683f910b5e2ac1c6458b_logo%203.png" alt="Grider">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68ba693ed98fab66ff1a1941_image%201660.png" alt="Vinicius Pimenta">
+          <div class="sp-name">Vinicius Pimenta</div>
+          <div class="sp-role">Partner</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/665ff6a775db431502c08cd7_logo-blue.svg" alt="Pinheiro Neto">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68ba693e17d77bde305fc133_image%201661.png" alt="Stephanie Hong">
+          <div class="sp-name">Stephanie Hong</div>
+          <div class="sp-role">Senior Associate</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/665ff6a775db431502c08cd7_logo-blue.svg" alt="Pinheiro Neto">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68d8ca03a5dc2fef1e21633b_image%201661.png" alt="Ye Lin Kim">
+          <div class="sp-name">Ye Lin Kim</div>
+          <div class="sp-role">Senior Associate</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68d8ca8b67394060cabf09b5_mattos-filho-logo.png" alt="Mattos Filho">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68ddeacb2b9450fc86fcc4f0_image%201661.png" alt="Kauê Machado">
+          <div class="sp-name">Kauê Machado</div>
+          <div class="sp-role">Partner</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68dde6b1a68da41262725641_Asset-3.svg" alt="">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68ddeaa5792a902ea3ffe131_image%201661.png" alt="Marta Mitico">
+          <div class="sp-name">Marta Mitico</div>
+          <div class="sp-role">Sócia</div>
+          <img class="sp-logo" src="fotos/marta.svg" alt="">
+        </div>
+        <div class="speaker-card">
+          <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68ecfbc99902e61a88e81f26_image%201661.png" alt="Marcelo Souza">
+          <div class="sp-name">Marcelo Souza</div>
+          <div class="sp-role">Gerente de Relacionamento</div>
+          <img class="sp-logo" src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68c94e731efa78b9acca91e7_Logo_SPNegocios_PNG.png" alt="SP Negócios">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SPONSORS -->
+  <div class="sponsors-section">
+    <div class="section-label ink">Patrocinadores e apoiadores</div>
+    <h2>Realização &amp; Patrocínio</h2>
+
+    <div class="sponsors-tier">
+      <div class="sponsors-tier-label">Organização</div>
+      <div class="sponsors-logos-row">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68715a91a292e2dc87c61c33_BRazil%20Korea.webp" alt="Brazil Korea Conference">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68bf97de78ec7cb91149254b_%ED%95%9C%EC%A4%91%EB%82%A8%EB%AF%B8%ED%98%91%ED%9A%8C%EB%A1%9C%EA%B3%A0.jpg" alt="Conselho Coreano">
+      </div>
+    </div>
+
+    <div class="sponsors-tier">
+      <div class="sponsors-tier-label">Master</div>
+      <div class="sponsors-logos-row">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68e4816fb3124e9eb2608d73_Ministry_of_Trade%2C_Industry_and_Energy_of_the_Republic_of_Korea_Logo_(English)_(horizontal).svg.png" alt="Ministry of Trade Korea">
+      </div>
+    </div>
+
+    <div class="sponsors-tier">
+      <div class="sponsors-tier-label">Patrocinadores</div>
+      <div class="sponsors-logos-row">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/66547f801b64fc973b0de444_Grant%201.webp" alt="Grant Thornton" style="height:60px;">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/66547f4eba6043678df93e23_Loogo_TozziniFreire_Positivo.webp" alt="TozziniFreire" style="height:60px;">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68a3baaf5d12e3d72f60bc4e_logo.svg" alt="Demarest" style="height:26px;">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/665ff6a775db431502c08cd7_logo-blue.svg" alt="Pinheiro Neto" style="height:26px;">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/66a41abff96d3e802b4db5cf_Tend%C3%AAncias.png" alt="Tendências">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/664ddb3f5a6d634d834b800e_image%201561.png" alt="Golden Hawk">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68748961e4d16b4c232ac63d_macke%20consultoria%201.webp" alt="Macke">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/6874886af3b36e7f5336c531_sustainquality-logo.webp" alt="Sustain Quality">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/66547ead923585a2844519a0_Mask%20group.webp" alt="Ivy Group">
+      </div>
+    </div>
+
+    <div class="sponsors-tier">
+      <div class="sponsors-tier-label">Apoio Institucional</div>
+      <div class="sponsors-logos-row">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/66547f4d68e0115c8ac43d6c_image%201564.webp" alt="">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68748aa5b3064782ad7a5833_logo_portal_empreendedor_hor.webp" alt="">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68a3a285e93e2d3706dd9362_Colorida_portugues4x.png" alt="">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68788175783c12940eb3af0e_487858368_704821351869613_1898919416267163563_n%201.png" alt="">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/6882f8795ae46e17fa06e08c_CAMARB_colorido_vertical-completo.png" alt="CAMARB">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/68c94e731efa78b9acca91e7_Logo_SPNegocios_PNG.png" alt="SP Negócios">
+        <img src="https://cdn.prod.website-files.com/664bf4382d450550a4d2907d/665fd5c1e1b8ae13fcf6f7e5_Logo-Topo-Ignea-Geologia-Meio-Ambiente.webp" alt="">
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:3rem;">
+      <a href="https://forms.gle/N8JkrxypsuiuzFjF6" target="_blank" class="btn btn-dark">Seja um patrocinador <span class="arrow">→</span></a>
+    </div>
+  </div>
+
+</div><!-- /bkc2025 -->
+
+<!-- ══════════ VIAGEM 2026 ══════════ -->
+<div class="page" id="page-viagem">
+
+  <div class="trip-hero">
+    <div>
+      <div class="section-label">// 14ª Edição · 2026</div>
+      <h1>Uma semana<br>em <em>Londres.</em></h1>
+      <p class="lead">A delegação oficial BKC 2026 reúne empresários brasileiros selecionados para 7 dias de negócios, cultura e networking internacional no Reino Unido.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqP_l-zwT3c-DPyRnr0EAZO2mMIlW3yZHeZYMZW7EAuMBuAA/viewform" target="_blank" class="btn btn-dark">Garantir minha vaga <span class="arrow">→</span></a>
+        <a onclick="showPage('bkc2025')" class="btn btn-outline">Ver BKC 25/26 →</a>
+      </div>
+    </div>
+    <div class="trip-meta-panel">
+      <div class="trip-meta-row">
+        <span class="trip-meta-key">Destino</span>
+        <span class="trip-meta-val cyan">Londres, Reino Unido</span>
+      </div>
+      <div class="trip-meta-row">
+        <span class="trip-meta-key">Data</span>
+        <span class="trip-meta-val orange">Setembro 2026</span>
+      </div>
+      <div class="trip-meta-row">
+        <span class="trip-meta-key">Edição</span>
+        <span class="trip-meta-val">14ª · BKC 2026</span>
+      </div>
+      <div class="trip-meta-row">
+        <span class="trip-meta-key">Vagas</span>
+        <span class="trip-meta-val red">Limitadas</span>
+      </div>
+      <div class="trip-meta-row">
+        <span class="trip-meta-key">Investimento</span>
+        <span class="trip-meta-val orange">USD 3.990 / pessoa</span>
+      </div>
+      <div class="trip-meta-row">
+        <span class="trip-meta-key">Status</span>
+        <span class="trip-meta-val lime">Inscrições abertas</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="trip-features">
+    <div class="trip-features-inner">
+      <div class="section-label">// Por que ir</div>
+      <h2>Uma experiência<br>que transforma.</h2>
+      <div class="trip-features-grid">
+        <div class="trip-feature-card">
+          <div class="trip-icon">🤝</div>
+          <h3>Network executivo</h3>
+          <p>Acesso ao círculo executivo BKC — empresários, líderes e tomadores de decisão do Brasil e da Coreia reunidos em um só lugar.</p>
+        </div>
+        <div class="trip-feature-card">
+          <div class="trip-icon">🏢</div>
+          <h3>Visitas técnicas</h3>
+          <p>Encontros com empresas coreanas de tecnologia, inovação e indústria. Agenda curada para maximizar oportunidades de negócios.</p>
+        </div>
+        <div class="trip-feature-card">
+          <div class="trip-icon">🎯</div>
+          <h3>Conferência oficial</h3>
+          <p>Um dia de conferência com palestrantes nacionais e internacionais debatendo as relações Brasil–Coreia no cenário atual.</p>
+        </div>
+        <div class="trip-feature-card">
+          <div class="trip-icon">🍜</div>
+          <h3>Imersão cultural</h3>
+          <p>Gastronomia, história, K-pop e K-beauty. Londres vai além dos negócios — a experiência transforma sua visão de mundo.</p>
+        </div>
+        <div class="trip-feature-card">
+          <div class="trip-icon">🌏</div>
+          <h3>Delegação curada</h3>
+          <p>Vagas limitadas garantem qualidade e sinergia. Você viaja com líderes brasileiros comprometidos com a internacionalização.</p>
+        </div>
+        <div class="trip-feature-card">
+          <div class="trip-icon">📋</div>
+          <h3>Suporte completo</h3>
+          <p>Itinerário com suporte em português, transfers, visto, seguro viagem e guia incluídos. Você só precisa embarcar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ITINERÁRIO-ÂNCORA -->
+  <div class="itinerary-wrap">
+    <div class="itinerary-head">
+      <div class="section-label">// Itinerário</div>
+      <h2>7 dias em <em>Londres.</em></h2>
+      <p>Programação preliminar da delegação BKC 2026. Datas e detalhes serão refinados nos próximos meses conforme confirmação da agenda oficial.</p>
+    </div>
+    <div class="itinerary-list">
+      <div class="itin-day">
+        <div class="itin-day-num">01<small>Dia</small></div>
+        <div class="itin-day-content">
+          <h4>Chegada em Londres · Recepção da delegação</h4>
+          <p>Transfer aeroporto → hotel, briefing inicial e jantar de boas-vindas com a delegação brasileira.</p>
+        </div>
+        <span class="itin-day-tag">Chegada</span>
+      </div>
+      <div class="itin-day">
+        <div class="itin-day-num">02<small>Dia</small></div>
+        <div class="itin-day-content">
+          <h4>Imersão cultural · Centro histórico</h4>
+          <p>Tour pelo Palácio Gyeongbokgung, bairro tradicional Bukchon Hanok e templo Jogyesa. Almoço coreano típico.</p>
+        </div>
+        <span class="itin-day-tag cultura">Cultura</span>
+      </div>
+      <div class="itin-day">
+        <div class="itin-day-num">03<small>Dia</small></div>
+        <div class="itin-day-content">
+          <h4>Conferência oficial BKC 2026 · FKI Tower</h4>
+          <p>Dia completo de painéis, palestras e sessões de networking com líderes brasileiros e coreanos. Coffee break, almoço e cerimônia de encerramento.</p>
+        </div>
+        <span class="itin-day-tag confer">Conferência</span>
+      </div>
+      <div class="itin-day">
+        <div class="itin-day-num">04<small>Dia</small></div>
+        <div class="itin-day-content">
+          <h4>Visitas técnicas · Inovação e tecnologia</h4>
+          <p>Tour por hubs de inovação coreanos: Samsung D'light, escritórios da Naver e startups parceiras. Reuniões agendadas.</p>
+        </div>
+        <span class="itin-day-tag network">Negócios</span>
+      </div>
+      <div class="itin-day">
+        <div class="itin-day-num">05<small>Dia</small></div>
+        <div class="itin-day-content">
+          <h4>K-Beauty, K-Food e mercado consumidor</h4>
+          <p>Visita ao distrito de Gangnam, encontros com marcas K-Beauty, almoço em mercado local e jantar de networking exclusivo.</p>
+        </div>
+        <span class="itin-day-tag network">Negócios</span>
+      </div>
+      <div class="itin-day">
+        <div class="itin-day-num">06<small>Dia</small></div>
+        <div class="itin-day-content">
+          <h4>Dia livre · Atividade opcional</h4>
+          <p>Tempo para reuniões individuais, compras ou tour opcional ao DMZ (Zona Desmilitarizada). Jantar de despedida.</p>
+        </div>
+        <span class="itin-day-tag">Livre</span>
+      </div>
+      <div class="itin-day">
+        <div class="itin-day-num">07<small>Dia</small></div>
+        <div class="itin-day-content">
+          <h4>Retorno ao Brasil</h4>
+          <p>Check-out, transfer ao aeroporto e voo de retorno. Materiais e contatos da delegação enviados por e-mail.</p>
+        </div>
+        <span class="itin-day-tag">Partida</span>
+      </div>
+    </div>
+    <div class="itinerary-note">
+      ⚡ Itinerário preliminar — datas exatas, ordem e atividades podem ser ajustadas conforme confirmação da agenda da 14ª edição. Detalhes finais enviados aos inscritos.
+    </div>
+  </div>
+
+  <div class="trip-includes">
+    <div class="section-label">// Incluído no pacote</div>
+    <h2>O que está incluso</h2>
+    <div class="includes-grid">
+      <div class="include-item"><div class="include-check">✓</div><p>Itinerário completo com suporte em português</p></div>
+      <div class="include-item"><div class="include-check">✓</div><p>Ingressos para atrações culturais em Londres</p></div>
+      <div class="include-item"><div class="include-check">✓</div><p>Transfers, serviço de recepção e guia incluídos</p></div>
+      <div class="include-item"><div class="include-check">✓</div><p>Visto e seguro viagem incluídos</p></div>
+      <div class="include-item"><div class="include-check">✓</div><p>Networking exclusivo com palestrantes e executivos</p></div>
+      <div class="include-item"><div class="include-check">✓</div><p>Acesso à conferência oficial BKC 2026</p></div>
+      <div class="include-item"><div class="include-check">✓</div><p>Visitas técnicas a empresas e hubs de inovação coreanos</p></div>
+      <div class="include-item"><div class="include-check">✓</div><p>Jantares e eventos de networking exclusivos</p></div>
+    </div>
+  </div>
+
+  <div class="trip-cta">
+    <div class="trip-cta-inner">
+      <div>
+        <h2>Faça parte da<br><em>14ª edição.</em></h2>
+        <p>Inscrições prévias abertas para empresários e líderes brasileiros. Vagas limitadas — garanta sua vaga antes do esgotamento.</p>
+      </div>
+      <div class="trip-cta-right">
+        <div class="trip-price">USD 3.990</div>
+        <div class="trip-price-note">por pessoa · preço sujeito a alteração</div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqP_l-zwT3c-DPyRnr0EAZO2mMIlW3yZHeZYMZW7EAuMBuAA/viewform" target="_blank" class="btn btn-white">Iniciar inscrição <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /viagem -->
+
+<!-- ══════════ EVENTOS ══════════ -->
+<div class="page" id="page-eventos">
+
+  <style>
+    /* ── EVENTOS PAGE ── */
+    .eventos-hero { padding: 4rem 2rem 2rem; max-width: 900px; margin: 0 auto; }
+    .eventos-hero h1 { font-size: clamp(2.5rem,6vw,4.5rem); font-family: 'Instrument Serif', serif; color: var(--ink); line-height: 1.1; margin: 0.5rem 0 1rem; }
+    .eventos-hero h1 em { font-style: italic; color: var(--blue); }
+    .eventos-hero p { font-size: 1.1rem; color: var(--muted); max-width: 560px; }
+
+    .eventos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem; padding: 3rem 2rem 5rem; max-width: 1100px; margin: 0 auto; }
+
+    .evento-card { background: #fff; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow .25s, transform .25s; cursor: default; }
+    .evento-card:hover { box-shadow: 0 16px 48px rgba(12,20,64,.12); transform: translateY(-4px); }
+
+    .evento-card-vis { height: 200px; display: flex; align-items: flex-end; padding: 1.25rem; position: relative; overflow: hidden; }
+    .evento-card-vis::before { content:''; position: absolute; inset:0; background: inherit; filter: brightness(.55); }
+
+    .ev-experimento .evento-card-vis { background: linear-gradient(135deg, #020c1f 0%, #0a2a5e 40%, #0e5ea8 75%, #4fc3f7 100%); }
+    .ev-jantar .evento-card-vis     { background: linear-gradient(135deg, #06020e 0%, #1a0a2e 45%, #2d1b69 75%, #0d3b6e 100%); }
+
+    .ev-vis-content { position: relative; z-index: 2; }
+    .ev-vis-content h3 { font-size: 1.65rem; font-family: 'Instrument Serif', serif; color: #fff; line-height: 1.1; margin-bottom: .3rem; }
+    .ev-vis-content p  { font-size: .72rem; color: rgba(255,255,255,.75); text-transform: uppercase; letter-spacing: .08em; }
+
+    .ev-badge { position: absolute; top: 1.1rem; right: 1.1rem; z-index: 3; background: rgba(255,255,255,.15); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.25); border-radius: 100px; padding: .25rem .75rem; font-size: .68rem; font-weight: 600; color: #fff; text-transform: uppercase; letter-spacing: .06em; }
+
+    .ev-body { padding: 1.5rem; display: flex; flex-direction: column; gap: .75rem; flex: 1; }
+
+    .ev-meta { display: flex; align-items: center; gap: .5rem; font-size: .83rem; color: var(--muted); }
+    .ev-meta svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--blue); }
+
+    .ev-desc { font-size: .9rem; color: var(--ink); line-height: 1.65; flex: 1; }
+
+    .ev-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .25rem; }
+    .ev-tag  { background: var(--bg-2); border: 1px solid var(--line); border-radius: 100px; padding: .2rem .65rem; font-size: .7rem; font-weight: 500; color: var(--ink-2); }
+
+    .ev-footer { padding: 0 1.5rem 1.5rem; display: flex; flex-direction: column; gap: .5rem; }
+    .ev-cta { display: flex; align-items: center; justify-content: center; gap: .5rem; background: var(--ink); color: #fff; font-size: .88rem; font-weight: 600; padding: .875rem 1.5rem; border-radius: 10px; text-decoration: none; transition: background .2s, transform .2s; letter-spacing: .02em; }
+    .ev-cta:hover { background: var(--blue); transform: translateY(-1px); }
+    .ev-vagas { text-align: center; font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--orange); }
+
+    .eventos-empty { display: none; }
+
+    @media(max-width:600px) { .eventos-grid { grid-template-columns: 1fr; padding: 2rem 1rem 4rem; } .eventos-hero { padding: 3rem 1rem 1.5rem; } }
+  </style>
+
+  <div class="eventos-hero">
+    <div class="section-label">// Agenda · 2026</div>
+    <h1>Eventos <em>exclusivos</em><br>BKC.</h1>
+    <p>Jantares, experiências culturais e encontros de networking para quem quer viver o universo Brasil–Coreia além da conferência principal. Vagas sempre limitadas.</p>
+  </div>
+
+  <div class="eventos-grid">
+
+    <!-- Jantar Coreano — 7 Mai 2026 -->
+    <div class="evento-card ev-jantar">
+      <div class="evento-card-vis">
+        <span class="ev-badge">07 Mai 2026</span>
+        <div class="ev-vis-content">
+          <h3>Jantar Coreano</h3>
+          <p>Networking internacional · Culinária coreana + Vinhos franceses + Café brasileiro</p>
+        </div>
+      </div>
+      <div class="ev-body">
+        <div class="ev-meta">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          19:00h – 23:00h
+        </div>
+        <div class="ev-meta">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21C12 21 5 13.5 5 8a7 7 0 0 1 14 0c0 5.5-7 13-7 13z"/><circle cx="12" cy="8" r="2.5"/></svg>
+          Workally · R. Augusta, 1102 · Consolação, SP
+        </div>
+        <p class="ev-desc">Jantar de networking internacional que combina culinária coreana, vinhos franceses e doces/café brasileiros. Voltado a empresários e líderes — o evento abordará negócios imobiliários, investimentos e inovação com foco na Coreia.</p>
+        <div class="ev-tags">
+          <span class="ev-tag">Gastronomia</span>
+          <span class="ev-tag">Networking</span>
+          <span class="ev-tag">Imóveis</span>
+          <span class="ev-tag">Inovação</span>
+        </div>
+      </div>
+      <div class="ev-footer">
+        <a href="https://api.whatsapp.com/send?phone=5511912717391&text=Gostaria%20de%20me%20inscrever%20no%20Jantar%20Coreano%20-%207%20de%20Maio%202026%20(Workally)" target="_blank" class="ev-cta">Inscrever-se → <span style="font-size:.75rem;opacity:.6;">via WhatsApp</span></a>
+        <p class="ev-vagas">⚡ Vagas limitadas</p>
+      </div>
+    </div>
+
+    <!-- Experimento — 21 Mai -->
+    <div class="evento-card ev-experimento">
+      <div class="evento-card-vis">
+        <span class="ev-badge">21 Mai 2026</span>
+        <div class="ev-vis-content">
+          <h3>Experimento</h3>
+          <p>Harmonização de vinhos com obras de arte · Atelier Travessia × Vinicola Aurora × BKC</p>
+        </div>
+      </div>
+      <div class="ev-body">
+        <div class="ev-meta">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          Recepção: a partir das 19h · Início: 19h30
+        </div>
+        <div class="ev-meta">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21C12 21 5 13.5 5 8a7 7 0 0 1 14 0c0 5.5-7 13-7 13z"/><circle cx="12" cy="8" r="2.5"/></svg>
+          Rua Minas Gerais, 201 · Higienópolis, SP
+        </div>
+        <p class="ev-desc">Uma experiência sensorial única em parceria com a Vinicola Aurora e o Atelier Travessia. A noite une a sofisticação dos vinhos brasileiros à arte contemporânea — harmonização guiada, obras expostas e conexões que ficam.</p>
+        <div class="ev-tags">
+          <span class="ev-tag">Arte</span>
+          <span class="ev-tag">Vinhos</span>
+          <span class="ev-tag">Cultura</span>
+          <span class="ev-tag">Experiência</span>
+        </div>
+      </div>
+      <div class="ev-footer">
+        <a href="https://api.whatsapp.com/send?phone=5511912717391&text=Gostaria%20de%20me%20inscrever%20no%20Experimento%20-%2021%20de%20Maio%202026%20(Harmoniza%C3%A7%C3%A3o)" target="_blank" class="ev-cta">Inscrever-se → <span style="font-size:.75rem;opacity:.6;">via WhatsApp</span></a>
+        <p class="ev-vagas">⚡ Vagas limitadas</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+  <div class="trip-hero">
+    <div>
+      <div class="section-label">// 14ª Edição · 2026</div>
+      <h1>Uma semana<br>em <em>Londres.</em></h1>
+      <p class="lead">A delegação oficial BKC 2026 reúne empresários brasileiros selecionados para 7 dias de negócios, cultura e networking internacional no Reino Unido.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqP_l-zwT3c-DPyRnr0EAZO2mMIlW3yZHeZYMZW7EAuMBuAA/viewform" target="_blank" class="btn btn-dark">Garantir minha vaga <span class="arrow">→</span></a>
+        <a onclick="showPage('bkc2025')" class="btn btn-outline">Ver BKC 25/26 →</a>
+      </div>
+    </div>
+    <div class="trip-meta-panel">
+      <div class="trip-meta-row">
+        <span class="trip-meta-key">Destino</span>
+        <span class="trip-meta-val cyan">Londres, Reino Unido</span>
+      </div>
+      <div class="trip-meta-row">
+        <span class="trip-meta-key">Data</span>
+        <span class="trip-meta-val orange">Setembro 2026</span>
+      </div>
+      <div class="trip-meta-row">
+        <span class="trip-meta-key">Edição</span>
+        <span class="trip-meta-val">14ª · BKC 2026</span>
+      </div>
+      <div class="trip-meta-row">
+        <span class="trip-meta-key">Vagas</span>
+        <span class="trip-meta-val red">Limitadas</span>
+      </div>
+      <div class="trip-meta-row">
+        <span class="trip-meta-key">Investimento</span>
+        <span class="trip-meta-val orange">USD 3.990 / pessoa</span>
+      </div>
+      <div class="trip-meta-row">
+        <span class="trip-meta-key">Status</span>
+        <span class="trip-meta-val lime">Inscrições abertas</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="trip-features">
+    <div class="trip-features-inner">
+      <div class="section-label">O que você vai viver</div>
+      <h2>Uma experiência<br>que transforma.</h2>
+      <div class="trip-features-grid">
+        <div class="trip-feature-card">
+          <div class="trip-icon">🤝</div>
+          <h3>Network executivo</h3>
+          <p>Acesso ao círculo executivo BKC — empresários, líderes e tomadores de decisão do Brasil e da Coreia reunidos em um só lugar.</p>
+        </div>
+        <div class="trip-feature-card">
+          <div class="trip-icon">🏢</div>
+          <h3>Visitas técnicas</h3>
+          <p>Encontros com empresas coreanas de tecnologia, inovação e indústria. Agenda curada para maximizar oportunidades de negócios.</p>
+        </div>
+        <div class="trip-feature-card">
+          <div class="trip-icon">🎯</div>
+          <h3>Conferência oficial</h3>
+          <p>Um dia de conferência com palestrantes nacionais e internacionais debatendo as relações Brasil–Coreia no cenário atual.</p>
+        </div>
+        <div class="trip-feature-card">
+          <div class="trip-icon">🍜</div>
+          <h3>Imersão cultural</h3>
+          <p>Gastronomia, história, K-pop e K-beauty. Londres vai além dos negócios — a experiência transforma sua visão de mundo.</p>
+        </div>
+        <div class="trip-feature-card">
+          <div class="trip-icon">🌏</div>
+          <h3>Delegação curada</h3>
+          <p>Vagas limitadas garantem qualidade e sinergia. Você viaja com líderes brasileiros comprometidos com a internacionalização.</p>
+        </div>
+        <div class="trip-feature-card">
+          <div class="trip-icon">📋</div>
+          <h3>Suporte completo</h3>
+          <p>Itinerário com suporte em português, transfers, visto, seguro viagem e guia incluídos. Você só precisa embarcar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trip-includes">
+    <div class="section-label">Incluído no pacote</div>
+    <h2>O que está incluso</h2>
+    <div class="includes-grid">
+      <div class="include-item">
+        <div class="include-check">✓</div>
+        <p>Itinerário completo com suporte em português</p>
+      </div>
+      <div class="include-item">
+        <div class="include-check">✓</div>
+        <p>Ingressos para atrações culturais em Londres</p>
+      </div>
+      <div class="include-item">
+        <div class="include-check">✓</div>
+        <p>Transfers, serviço de recepção e guia incluídos</p>
+      </div>
+      <div class="include-item">
+        <div class="include-check">✓</div>
+        <p>Visto e seguro viagem incluídos</p>
+      </div>
+      <div class="include-item">
+        <div class="include-check">✓</div>
+        <p>Networking exclusivo com palestrantes e executivos</p>
+      </div>
+      <div class="include-item">
+        <div class="include-check">✓</div>
+        <p>Acesso à conferência oficial BKC 2026</p>
+      </div>
+      <div class="include-item">
+        <div class="include-check">✓</div>
+        <p>Visitas técnicas a empresas e hubs de inovação internacionais</p>
+      </div>
+      <div class="include-item">
+        <div class="include-check">✓</div>
+        <p>Jantares e eventos de networking exclusivos</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="trip-cta">
+    <div class="trip-cta-inner">
+      <div>
+        <h2>Faça parte da<br><em>14ª edição.</em></h2>
+        <p>Inscrições prévias abertas para empresários e líderes brasileiros. Vagas limitadas — garanta sua vaga antes do esgotamento.</p>
+      </div>
+      <div class="trip-cta-right">
+        <div class="trip-price">USD 3.990</div>
+        <div class="trip-price-note">por pessoa · preço sujeito a alteração</div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqP_l-zwT3c-DPyRnr0EAZO2mMIlW3yZHeZYMZW7EAuMBuAA/viewform" target="_blank" class="btn btn-white">Iniciar inscrição <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /eventos -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Brazil <em>×</em> Korea</div>
+      <div class="footer-tag">Conference · Since 2016 · 14ª edição em 2026</div>
+    </div>
+    <div class="footer-col">
+      <h4>Páginas</h4>
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('bkc2025')">BKC 25/26</a>
+      <a onclick="showPage('viagem')">Viagem 2026</a>
+      <a onclick="showPage('eventos')">Eventos</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqP_l-zwT3c-DPyRnr0EAZO2mMIlW3yZHeZYMZW7EAuMBuAA/viewform" target="_blank">Inscrever-se</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <a href="https://api.whatsapp.com/send?phone=5511912717391&text=Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Brazil%20Korea%20Conference" target="_blank">WhatsApp</a>
+      <a href="#">Imprensa</a>
+      <a href="https://forms.gle/N8JkrxypsuiuzFjF6" target="_blank">Seja patrocinador</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Brazil Korea Conference. Todos os direitos reservados.</div>
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <span>bkcoficial.com</span>
+      <span style="opacity:0.25;">·</span>
+      <a href="https://echolab.digital" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;display:inline-flex;align-items:center;gap:0.35rem;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">
+        Desenvolvido por <strong style="color:rgba(255,255,255,0.65);font-weight:600;">echo_lab</strong>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOAT: Assistente BKC -->
+<div class="float-group">
+  <button class="float-btn float-ai" onclick="openAiModal('geral')" title="Assistente IA BKC">
+    <div class="float-ai-icon">✨</div>
+    <div class="float-ai-text">
+      <strong>Assistente BKC</strong>
+      <span>Assistente Virtual BKC</span>
+    </div>
+  </button>
+</div>
+
+<!-- AI MODAL -->
+<div class="ai-modal" id="aiModal">
+  <div class="ai-modal-box">
+    <button class="ai-modal-close" onclick="closeAiModal()">✕</button>
+    <h3 class="ai-modal-title" id="aiModalTitle">Assistente BKC ✨</h3>
+    <p class="ai-modal-sub" id="aiModalSub">Como posso ajudar você hoje?</p>
+    <div class="ai-tabs">
+      <button class="ai-tab active" onclick="switchTab('geral', this)">🌐 Geral</button>
+      <button class="ai-tab" onclick="switchTab('networking', this)">🤝 Networking</button>
+      <button class="ai-tab" onclick="switchTab('cultural', this)">🇰🇷 Guia Cultural</button>
+    </div>
+    <div class="ai-input-wrap">
+      <input type="text" class="ai-modal-input" id="aiModalInput" placeholder="Como posso ajudar?" onkeydown="if(event.key==='Enter') sendAiMsg()">
+      <button class="ai-send" onclick="sendAiMsg()" title="Enviar">→</button>
+    </div>
+    <div class="ai-result" id="aiResult"></div>
+    <div class="ai-modal-wa">
+      <p>Prefere falar com um humano?</p>
+      <a href="https://api.whatsapp.com/send?phone=5511912717391&text=Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20delegação%20BKC%202026" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Falar no WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + pageId).classList.add('active');
+  document.querySelectorAll('.nav-center a').forEach(a => a.classList.remove('active'));
+  const navEl = document.getElementById('nav-' + pageId);
+  if (navEl) navEl.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const titles = {
+    home: 'Brazil Korea Conference',
+    bkc2025: 'BKC 25/26 — Brazil Korea Conference',
+    viagem: 'Viagem 2026 — Brazil Korea Conference',
+    eventos: 'Eventos — Brazil Korea Conference'
+  };
+  document.title = titles[pageId] || 'Brazil Korea Conference';
+}
+
+function openMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const ham = document.querySelector('.nav-hamburger');
+  menu.classList.add('open');
+  ham.classList.add('open');
+  ham.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+function closeMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const ham = document.querySelector('.nav-hamburger');
+  menu.classList.remove('open');
+  ham.classList.remove('open');
+  ham.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+/* Swipe-down para fechar o menu mobile */
+(function() {
+  let startY = 0;
+  const menu = document.getElementById('mobileMenu');
+  menu.addEventListener('touchstart', function(e) {
+    startY = e.touches[0].clientY;
+  }, { passive: true });
+  menu.addEventListener('touchend', function(e) {
+    const dy = e.changedTouches[0].clientY - startY;
+    if (dy > 80 && menu.scrollTop === 0) closeMenu();
+  }, { passive: true });
+})();
+
+function toggleAccordion(trigger) {
+  const content = trigger.nextElementSibling;
+  const isOpen = trigger.classList.contains('open');
+  // close all
+  document.querySelectorAll('.accordion-trigger').forEach(t => t.classList.remove('open'));
+  document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+  // open clicked if it was closed
+  if (!isOpen) {
+    trigger.classList.add('open');
+    content.classList.add('open');
+  }
+}
+
+// ── AI MODAL ──
+let currentTab = 'geral';
+
+const tabConfig = {
+  geral:      { title: 'Assistente BKC ✨',       sub: 'Tire dúvidas sobre a viagem e a delegação.',        placeholder: 'Ex: Como funciona a viagem de 2026?' },
+  networking: { title: '🤝 Consultor de Networking', sub: 'Descubra conexões ideais para o seu setor.',       placeholder: 'Ex: Trabalho com agronegócio e quero expandir para a Coreia...' },
+  cultural:   { title: '🇰🇷 Guia Cultural',         sub: 'Traduza frases e aprenda etiqueta para Seul.',     placeholder: 'Ex: Muito prazer em conhecê-lo, Sr. Kim.' }
+};
+
+function openAiModal(tab) {
+  currentTab = tab || 'geral';
+  const modal = document.getElementById('aiModal');
+  modal.classList.add('open');
+  applyTab(currentTab);
+  // sync tab buttons
+  document.querySelectorAll('.ai-tab').forEach(t => t.classList.remove('active'));
+  const tabMap = { geral: 0, networking: 1, cultural: 2 };
+  const tabs = document.querySelectorAll('.ai-tab');
+  if (tabs[tabMap[currentTab]]) tabs[tabMap[currentTab]].classList.add('active');
+  document.getElementById('aiModalInput').value = '';
+  const result = document.getElementById('aiResult');
+  result.style.display = 'none';
+  result.innerHTML = '';
+  setTimeout(() => document.getElementById('aiModalInput').focus(), 100);
+}
+
+function applyTab(tab) {
+  const cfg = tabConfig[tab];
+  document.getElementById('aiModalTitle').innerText = cfg.title;
+  document.getElementById('aiModalSub').innerText = cfg.sub;
+  document.getElementById('aiModalInput').placeholder = cfg.placeholder;
+}
+
+function switchTab(tab, btn) {
+  currentTab = tab;
+  applyTab(tab);
+  document.querySelectorAll('.ai-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('aiModalInput').value = '';
+  const result = document.getElementById('aiResult');
+  result.style.display = 'none';
+  result.innerHTML = '';
+}
+
+function closeAiModal() {
+  document.getElementById('aiModal').classList.remove('open');
+}
+document.getElementById('aiModal').addEventListener('click', function(e) {
+  if (e.target === this) closeAiModal();
+});
+
+async function sendAiMsg() {
+  const input = document.getElementById('aiModalInput');
+  const val = input.value.trim();
+  if (!val) return;
+  const result = document.getElementById('aiResult');
+  result.style.display = 'block';
+  result.innerHTML = '<div class="ai-loader"></div> Pensando...';
+  input.disabled = true;
+
+  try {
+    const response = await fetch('groq-proxy.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ mode: currentTab, message: val })
+    });
+    const data = await response.json();
+    const text = data.reply || 'Sem resposta.';
+    // Transforma o link wa.me em link clicável
+    const html = text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/(wa\.me\/\S+)/g, '<a href="https://$1" target="_blank" style="color:var(--cyan);font-weight:600;">WhatsApp →</a>')
+      .replace(/\n/g, '<br>');
+    result.innerHTML = html;
+  } catch(err) {
+    result.innerHTML = 'Erro de conexão. Fale direto no <a href="https://wa.me/5511912717391" target="_blank" style="color:var(--cyan);font-weight:600;">WhatsApp →</a>';
+  }
+  input.disabled = false;
+}
+</script>
+</body>
+</html>
