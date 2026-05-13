@@ -1375,6 +1375,8 @@ footer { background: var(--ink); color: rgba(255,255,255,0.6); padding: 4rem 3re
 
 /* ── LANGUAGE SWITCHER ── */
 .lang-switcher { display: flex; align-items: center; gap: 0.25rem; }
+nav .lang-switcher { display: flex; }
+@media (max-width: 991px) { nav .lang-switcher { display: none; } }
 .lang-btn {
   background: transparent;
   border: 1.5px solid var(--line);
