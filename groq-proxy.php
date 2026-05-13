@@ -4,7 +4,13 @@
 // A chave fica 100% no servidor, nunca exposta no front-end.
 
 header('Content-Type: application/json; charset=utf-8');
-header('Access-Control-Allow-Origin: *');
+$allowed_origins = ['https://bkcoficial.com', 'https://www.bkcoficial.com'];
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+if (in_array($origin, $allowed_origins)) {
+    header('Access-Control-Allow-Origin: ' . $origin);
+} else {
+    header('Access-Control-Allow-Origin: ' . ($allowed_origins[0]));
+}
 header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
@@ -28,41 +34,61 @@ $GROQ_ENDPOINT = 'https://api.groq.com/openai/v1/chat/completions';
 $body    = json_decode(file_get_contents('php://input'), true);
 $mode    = isset($body['mode'])    ? trim($body['mode'])    : 'geral';
 $message = isset($body['message']) ? trim($body['message']) : '';
+$lang    = isset($body['lang'])    ? trim($body['lang'])    : 'pt';
+if (!in_array($lang, ['pt', 'ko', 'en'])) $lang = 'pt';
 
 if (empty($message)) {
-    echo json_encode(['reply' => 'Por favor, escreva sua dúvida.']);
+    $empty_msgs = ['pt' => 'Por favor, escreva sua dúvida.', 'ko' => '질문을 입력해 주세요.', 'en' => 'Please write your question.'];
+    echo json_encode(['reply' => $empty_msgs[$lang]]);
     exit;
 }
 
-// ── PROMPTS POR MODO ──
+// ── PROMPTS POR MODO E IDIOMA ──
 $wa = 'wa.me/5511912717391';
+
+$lang_instructions = [
+    'pt' => 'Responda SEMPRE em Português do Brasil.',
+    'ko' => '항상 한국어로 답변하세요.',
+    'en' => 'Always respond in American English.',
+];
+$wa_ctas = [
+    'pt' => ["Manda uma mensagem no WhatsApp: $wa", "Chama no WhatsApp: $wa", "Fala com a gente no WhatsApp: $wa"],
+    'ko' => ["WhatsApp으로 메시지 보내세요: $wa", "WhatsApp으로 연락하세요: $wa"],
+    'en' => ["Send us a message on WhatsApp: $wa", "Reach us on WhatsApp: $wa"],
+];
+$li  = $lang_instructions[$lang];
+$wac = $wa_ctas[$lang][0];
+$wac2 = $wa_ctas[$lang][count($wa_ctas[$lang]) - 1];
 
 $prompts = [
 
-  'geral' => "Você é o assistente do Brazil Korea Conference (BKC), evento de negócios Brasil-Coreia com delegação oficial para Seul em outubro de 2026 (USD 3.990 por pessoa, vagas limitadas).
+  'geral' => "$li
+Você é o assistente do Brazil Korea Conference (BKC), evento de negócios Brasil-Coreia com delegação oficial para Londres em setembro de 2026 (USD 3.990 por pessoa, vagas limitadas).
 
 Regras absolutas:
 - Responda em no máximo 3 frases curtas e diretas.
 - Tom caloroso, executivo e animado — como alguém que realmente quer ajudar.
 - Nunca use tópicos, listas ou markdown.
-- Sempre termine convidando para o WhatsApp de forma natural, usando exatamente este link: $wa
+- Sempre termine convidando para o WhatsApp de forma natural, usando exatamente este link: $wac
 - Se perguntar sobre preço, datas ou inscrição, confirme os dados e direcione para o WhatsApp.
-- Gere curiosidade sobre a experiência em Seul.",
+- Gere curiosidade sobre a experiência em Londres.",
 
-  'networking' => "Você é o consultor de networking do Brazil Korea Conference (BKC 2026, Seul).
+  'networking' => "$li
+Você é o consultor de networking do Brazil Korea Conference (BKC 2026, Londres).
 
 Regras absolutas:
 - Com base no setor ou interesse do usuário, sugira em 1 frase com quem ele deveria se conectar no evento ou qual painel é ideal para ele.
 - Seja específico, empolgante e breve — máximo 2 frases no total.
-- Finalize sempre com: 'Manda uma mensagem no WhatsApp que a gente monta sua agenda: $wa'
+- Finalize sempre com: '$wac'
 - Nunca use listas, tópicos ou markdown.",
 
-  'cultural' => "Você é o guia de etiqueta de negócios coreana do Brazil Korea Conference.
+  'cultural' => "$li
+Você é o guia de etiqueta de negócios coreana do Brazil Korea Conference.
 
 Regras absolutas:
 - Se o usuário pedir uma frase em coreano: escreva em hangul, coloque a pronúncia romanizada entre parênteses, e dê 1 dica relâmpago de etiqueta.
 - Se for uma dúvida cultural: responda em no máximo 2 frases objetivas.
-- Finalize sempre com: 'Quer um briefing completo antes de embarcar? Chama no WhatsApp: $wa'
+- Finalize sempre com: '$wac2'
 - Nunca use listas, tópicos ou markdown."
 
 ];

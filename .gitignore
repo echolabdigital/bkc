@@ -1,0 +1,11 @@
+# Env / secrets
+.env
+config.local.php
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
