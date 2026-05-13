@@ -2902,7 +2902,7 @@ async function sendAiMsg() {
     const response = await fetch('groq-proxy.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ mode: currentTab, message: val })
+      body: JSON.stringify({ mode: currentTab, message: val, lang: currentLang })
     });
     const data = await response.json();
     const text = data.reply || (t ? t.ai_no_reply : 'Sem resposta.');
