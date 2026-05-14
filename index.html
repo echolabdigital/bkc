@@ -1395,6 +1395,96 @@ footer { background: var(--ink); color: rgba(255,255,255,0.6); padding: 4rem 3re
 @media (max-width: 480px) {
   .lang-btn { padding: 0.3rem 0.45rem; font-size: 0.62rem; }
 }
+
+/* ── LGPD BANNER ── */
+#lgpd-banner {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  z-index: 9000;
+  width: min(680px, calc(100vw - 2rem));
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 8px 40px rgba(12,20,64,0.12), 0 2px 8px rgba(12,20,64,0.06);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+#lgpd-banner.visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+#lgpd-banner.hiding {
+  transform: translateX(-50%) translateY(130%);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 1, 1), opacity 0.25s ease;
+}
+.lgpd-icon {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  background: var(--bg-2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-2);
+}
+.lgpd-text {
+  flex: 1;
+  min-width: 0;
+}
+.lgpd-text strong {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.1rem;
+}
+.lgpd-text span {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.lgpd-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+.lgpd-btn {
+  padding: 0.45rem 1rem;
+  border-radius: 100px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.18s;
+  white-space: nowrap;
+  border: 1.5px solid transparent;
+}
+.lgpd-btn-accept {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+.lgpd-btn-accept:hover { background: var(--ink-2); border-color: var(--ink-2); }
+.lgpd-btn-decline {
+  background: transparent;
+  color: var(--muted);
+  border-color: var(--line);
+}
+.lgpd-btn-decline:hover { border-color: var(--muted); color: var(--ink); }
+@media (max-width: 540px) {
+  #lgpd-banner { flex-wrap: wrap; padding: 1rem; }
+  .lgpd-actions { width: 100%; justify-content: flex-end; }
+}
 </style>
 </head>
 <body>
@@ -3144,6 +3234,10 @@ const translations = {
     ai_sending: 'Pensando...',
     ai_no_reply: 'Sem resposta.',
     ai_error: 'Erro de conexão. Fale direto no <a href="https://wa.me/5511912717391" target="_blank" style="color:var(--cyan);font-weight:600;">WhatsApp →</a>',
+    lgpd_title: 'Privacidade & LGPD',
+    lgpd_text: 'Usamos cookies essenciais para o funcionamento do site. Ao continuar, você concorda com nossa <a href="https://www.gov.br/anpd/pt-br" target="_blank" style="color:var(--ink);text-decoration:underline;text-underline-offset:2px;">política de privacidade</a> conforme a LGPD.',
+    lgpd_accept: 'Aceitar',
+    lgpd_decline: 'Recusar',
   },
   ko: {
     nav_trip: '여행 2026',
@@ -3357,6 +3451,10 @@ const translations = {
     ai_sending: '생각 중...',
     ai_no_reply: '응답 없음.',
     ai_error: '연결 오류. <a href="https://wa.me/5511912717391" target="_blank" style="color:var(--cyan);font-weight:600;">WhatsApp →</a>으로 직접 연락하세요',
+    lgpd_title: '개인정보 & LGPD',
+    lgpd_text: '사이트 운영에 필수적인 쿠키를 사용합니다. 계속하면 LGPD에 따른 <a href="https://www.gov.br/anpd/pt-br" target="_blank" style="color:var(--ink);text-decoration:underline;text-underline-offset:2px;">개인정보 처리방침</a>에 동의하는 것으로 간주됩니다.',
+    lgpd_accept: '동의',
+    lgpd_decline: '거부',
   },
   en: {
     nav_trip: 'Trip 2026',
@@ -3570,6 +3668,10 @@ const translations = {
     ai_sending: 'Thinking...',
     ai_no_reply: 'No response.',
     ai_error: 'Connection error. Contact us directly on <a href="https://wa.me/5511912717391" target="_blank" style="color:var(--cyan);font-weight:600;">WhatsApp →</a>',
+    lgpd_title: 'Privacy & LGPD',
+    lgpd_text: 'We use essential cookies for the site to work. By continuing, you agree to our <a href="https://www.gov.br/anpd/pt-br" target="_blank" style="color:var(--ink);text-decoration:underline;text-underline-offset:2px;">privacy policy</a> under Brazil\'s LGPD.',
+    lgpd_accept: 'Accept',
+    lgpd_decline: 'Decline',
   }
 };
 
@@ -3638,7 +3740,45 @@ function setLanguage(lang) {
 // Apply saved language on load
 document.addEventListener('DOMContentLoaded', () => {
   if (currentLang !== 'pt') setLanguage(currentLang);
+  initLGPD();
 });
+
+// ── LGPD ──
+function initLGPD() {
+  if (localStorage.getItem('bkc_lgpd')) return;
+  const banner = document.getElementById('lgpd-banner');
+  if (!banner) return;
+  setTimeout(() => banner.classList.add('visible'), 800);
+}
+
+function lgpdRespond(accepted) {
+  const banner = document.getElementById('lgpd-banner');
+  banner.classList.remove('visible');
+  banner.classList.add('hiding');
+  const decision = accepted ? 'accepted' : 'declined';
+  localStorage.setItem('bkc_lgpd', decision);
+  fetch('lgpd-consent.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ decision, lang: currentLang, ts: new Date().toISOString() })
+  }).catch(() => {});
+}
 </script>
+
+<div id="lgpd-banner" role="dialog" aria-label="Aviso de privacidade LGPD">
+  <div class="lgpd-icon">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    </svg>
+  </div>
+  <div class="lgpd-text">
+    <strong data-i18n="lgpd_title">Privacidade &amp; LGPD</strong>
+    <span data-i18n-html="lgpd_text">Usamos cookies essenciais para funcionamento do site. Ao continuar, você concorda com nossa <a href="https://www.gov.br/anpd/pt-br" target="_blank" style="color:var(--ink);text-decoration:underline;text-underline-offset:2px;">política de privacidade</a> conforme a LGPD.</span>
+  </div>
+  <div class="lgpd-actions">
+    <button class="lgpd-btn lgpd-btn-decline" onclick="lgpdRespond(false)" data-i18n="lgpd_decline">Recusar</button>
+    <button class="lgpd-btn lgpd-btn-accept" onclick="lgpdRespond(true)" data-i18n="lgpd_accept">Aceitar</button>
+  </div>
+</div>
 </body>
 </html>
